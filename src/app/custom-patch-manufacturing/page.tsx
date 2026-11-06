@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 import Link from "next/link";
 import { ArrowRight, Boxes, Brush, Layers, Palette, Ruler, ShieldCheck, Tag } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Photo from "@/components/Photo";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 import SectionHeading from "@/components/SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { BackingOptions, CtaBanner, ProcessSteps } from "@/components/sections";
@@ -37,7 +38,7 @@ export default function CustomManufacturing() {
         crumbs={[{ name: "Custom Manufacturing", path: "/custom-patch-manufacturing/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.production.hoop} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 55%" />
+            <PhotoSlideshow photos={slides.machines} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 55%" />
           </Reveal>
         }
       >
@@ -70,8 +71,8 @@ export default function CustomManufacturing() {
           </div>
           <Reveal>
             <div className="grid grid-cols-2 gap-4">
-              <Photo photo={media.production.line} className="aspect-[3/4] rounded-xl" sizes="25vw" />
-              <Photo photo={media.production.headAlt} className="aspect-[3/4] rounded-xl" sizes="25vw" position="50% 35%" />
+              <PhotoSlideshow photos={slides.line} className="aspect-[3/4] rounded-xl" sizes="25vw" />
+              <PhotoSlideshow photos={slides.machines} start={1} className="aspect-[3/4] rounded-xl" sizes="25vw" position="50% 35%" />
             </div>
           </Reveal>
         </div>

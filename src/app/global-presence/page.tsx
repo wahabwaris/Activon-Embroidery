@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 import Link from "next/link";
 import { ArrowRight, Clock, FileCheck, Globe, Mail, MessageSquare, Package, Plane, Receipt } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -9,7 +10,7 @@ import JsonLd from "@/components/JsonLd";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { CtaBanner } from "@/components/sections";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 
 export const metadata: Metadata = pageMetadata({
   title: "Global Presence – Custom Patches Shipped Worldwide",
@@ -45,7 +46,7 @@ export default function GlobalPresence() {
         crumbs={[{ name: "Global Presence", path: "/global-presence/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.bulk.one} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
+            <PhotoSlideshow photos={slides.bulk} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
           </Reveal>
         }
       >
@@ -77,7 +78,7 @@ export default function GlobalPresence() {
           <div className="lg:col-span-5">
             <SectionHeading eyebrow="How It Works" title="Ordering from abroad in five steps" />
             <Reveal delay={0.1}>
-              <Photo photo={media.production.line} className="mt-10 hidden aspect-[4/5] rounded-xl lg:block" sizes="35vw" />
+              <PhotoSlideshow photos={slides.line} className="mt-10 hidden aspect-[4/5] rounded-xl lg:block" sizes="35vw" />
             </Reveal>
           </div>
           <Stagger className="relative grid gap-4 lg:col-span-7">

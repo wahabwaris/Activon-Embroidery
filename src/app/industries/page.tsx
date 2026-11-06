@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -8,7 +9,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { CtaBanner } from "@/components/sections";
 import { pageMetadata } from "@/lib/seo";
 import { industries } from "@/lib/industries";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 
 export const metadata: Metadata = pageMetadata({
   title: "Industries – Custom Patches for Brands, Uniforms, Teams & Distributors",
@@ -28,7 +29,7 @@ export default function Industries() {
         crumbs={[{ name: "Industries", path: "/industries/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.bulk.three} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
+            <PhotoSlideshow photos={slides.bulk} start={1} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
           </Reveal>
         }
       />
@@ -63,7 +64,7 @@ export default function Industries() {
       <section className="section">
         <div className="container grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <Photo photo={media.production.lineWide} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 45vw" position="50% 40%" />
+            <PhotoSlideshow photos={slides.production} start={2} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 45vw" position="50% 40%" />
           </Reveal>
           <div>
             <SectionHeading eyebrow="Not sure what fits?" title="Tell us how the patch will be used" text="Share the product, garment or application and we'll recommend the patch type, border and backing – with a quotation for your quantity." />

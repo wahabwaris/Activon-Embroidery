@@ -15,6 +15,7 @@ const quick = [
   { label: "Industries", href: "/industries/" },
   { label: "Global Presence", href: "/global-presence/" },
   { label: "Gallery", href: "/gallery/" },
+  { label: "Product Catalogue", href: "/catalogue/" },
   { label: "Contact Us", href: "/contact-us/" },
   { label: "Get a Quote", href: "/get-a-quote/" },
 ];
@@ -22,7 +23,7 @@ const quick = [
 export default function Footer() {
   const wa = whatsappLink();
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-ink-900">
+    <footer className="relative overflow-hidden print:hidden border-t border-white/10 bg-ink-900">
       <div className="stitch-line h-[2px] w-full opacity-60" />
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">

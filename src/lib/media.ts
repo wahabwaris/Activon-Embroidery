@@ -38,3 +38,13 @@ export const media = {
     three: p("bulk-patches-3", "Large batch of finished embroidered patches in many colours", 1200, 520),
   },
 };
+
+/** Ordered photo sets used by slideshows (one image after another). */
+export const slides = {
+  production: [media.production.head, media.production.headAlt, media.production.hoop, media.production.lineAlt, media.production.line, media.production.lineWide],
+  line: [media.production.line, media.production.lineWide, media.production.lineAlt],
+  machines: [media.production.headAlt, media.production.hoop, media.production.head],
+  details: [media.detail.starLaurel, media.detail.rays, media.detail.merrowed, media.detail.stripes, media.detail.checker, media.detail.anchor, media.detail.maple],
+  bulk: [media.bulk.two, media.bulk.three, media.bulk.one],
+  mixed: [media.production.head, media.detail.starLaurel, media.bulk.three, media.detail.rays, media.production.line, media.detail.merrowed],
+};

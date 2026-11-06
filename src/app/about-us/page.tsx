@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 import Link from "next/link";
 import { Globe, Handshake, Layers, Palette, Target, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Photo from "@/components/Photo";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 import SectionHeading from "@/components/SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { CtaBanner, ProductCards } from "@/components/sections";
@@ -34,7 +35,7 @@ export default function About() {
         crumbs={[{ name: "About Us", path: "/about-us/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.production.lineAlt} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 40%" />
+            <PhotoSlideshow photos={slides.production} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 40%" />
           </Reveal>
         }
       />

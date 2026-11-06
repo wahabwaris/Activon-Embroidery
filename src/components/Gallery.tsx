@@ -71,7 +71,7 @@ export default function Gallery({ withFilters = true, limit }: { withFilters?: b
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: Math.min(i, 12) * 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
               <button
                 type="button"

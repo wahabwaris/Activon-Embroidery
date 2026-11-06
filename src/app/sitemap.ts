@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/oem-private-label/", 0.8, "monthly"],
     ["/get-a-quote/", 0.8, "monthly"],
     ["/gallery/", 0.7, "weekly"],
+    ["/catalogue/", 0.7, "monthly"],
     ["/about-us/", 0.6, "monthly"],
     ["/contact-us/", 0.6, "yearly"],
   ];

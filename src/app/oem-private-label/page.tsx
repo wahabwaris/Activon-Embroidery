@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 import Link from "next/link";
 import { ArrowRight, Building2, Dumbbell, Megaphone, Shirt, ShoppingBag, Sparkles, Truck } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Photo from "@/components/Photo";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 import SectionHeading from "@/components/SectionHeading";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
@@ -47,7 +48,7 @@ export default function Oem() {
         crumbs={[{ name: "OEM & Private Label", path: "/oem-private-label/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.bulk.two} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
+            <PhotoSlideshow photos={slides.bulk} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
           </Reveal>
         }
       >

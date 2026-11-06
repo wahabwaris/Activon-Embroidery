@@ -1,9 +1,10 @@
 import Link from "next/link";
+import PhotoSlideshow from "./PhotoSlideshow";
 import { ArrowRight } from "lucide-react";
 import PageHero from "./PageHero";
 import PatchArt from "./PatchArt";
 import Photo from "./Photo";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 import SectionHeading from "./SectionHeading";
 import QuoteForm from "./QuoteForm";
 import Faq from "./Faq";
@@ -54,9 +55,9 @@ export default function ProductPage({ productKey }: { productKey: ProductKey }) 
           p.photo ? (
             <Reveal>
               <div className="relative mx-auto max-w-md pb-10 pl-10">
-                <Photo photo={media.production.head} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
+                <PhotoSlideshow photos={slides.production} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
                 <div className="absolute bottom-0 left-0 w-1/2 overflow-hidden rounded-xl border-4 border-ink shadow-2xl">
-                  <Photo photo={p.photo} className="aspect-square" sizes="20vw" />
+                  <PhotoSlideshow photos={slides.details} className="aspect-square" sizes="20vw" />
                 </div>
               </div>
             </Reveal>

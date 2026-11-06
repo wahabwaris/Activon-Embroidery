@@ -90,3 +90,33 @@ body {
   background: #d4af72;
   color: #101010;
 }
+
+/* ---------- Catalogue print / PDF ---------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  html,
+  body {
+    background: #101010 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cat-sheet {
+    width: 210mm !important;
+    max-width: none !important;
+    height: 297mm !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    break-after: page;
+    page-break-after: always;
+  }
+  .cat-sheet:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}

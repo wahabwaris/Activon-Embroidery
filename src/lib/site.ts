@@ -33,6 +33,7 @@ export const nav: NavItem[] = [
       { label: "Embroidered Patches", href: "/embroidered-patches/" },
       { label: "Sublimation Patches", href: "/sublimation-patches/" },
       { label: "Woven Patches", href: "/woven-patches/" },
+      { label: "Product Catalogue", href: "/catalogue/" },
     ],
   },
   {

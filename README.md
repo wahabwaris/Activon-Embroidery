@@ -39,6 +39,7 @@ Production mode (faster, what visitors get): `npm run build` then `npm start`.
 | `/global-presence/` | Ordering from abroad, export steps, international FAQ |
 | `/oem-private-label/` | OEM & private label |
 | `/gallery/` | Filterable gallery + lightbox |
+| `/catalogue/` | 7-page product catalogue (A4) with Download PDF + Print buttons |
 | `/contact-us/` | Email, WhatsApp, social, contact form |
 | `/get-a-quote/` | Main quote form (`?product=woven` preselects a category) |
 | `/admin/` | Inquiry dashboard (password protected) |
@@ -81,6 +82,22 @@ App Password, and put it in `SMTP_PASS`. Without SMTP the form still works and s
   companies' logos (car makers, sports leagues, clubs, universities, film characters) can trigger
   takedowns, search removal and customs seizures. The supplied photos were cropped so no
   third-party logo is readable.
+
+## Catalogue
+
+- Page: `src/app/catalogue/page.tsx` – 7 A4 sheets (cover, company, 3 product pages, customization,
+  how to order + contact with WhatsApp and quote QR codes). Email and phone appear on every page.
+- Downloadable PDF: `public/catalogue/activon-embroidery-catalogue-2026.pdf`.
+- **After editing catalogue content, regenerate the PDF:** run `npm run build && npm start`, open
+  http://localhost:3000/catalogue/, press **Print**, choose **Save as PDF**, paper **A4**, margins
+  **None**, enable **Background graphics**, and save over the file above.
+
+## Photo slideshows
+
+Featured photos cross-fade to the next image every **1 second** (`SLIDE_INTERVAL_MS` in
+`src/components/PhotoSlideshow.tsx` – change it to e.g. `3000` for a slower pace). Photo sets live in
+`slides` in `src/lib/media.ts`. Slideshows pause when off-screen and for visitors who prefer
+reduced motion. Gallery tiles appear one by one.
 
 ## Brand / logo
 

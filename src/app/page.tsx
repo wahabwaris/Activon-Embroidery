@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, FileCheck, MessageSquare, Package, Plane, ScanLine, ShieldCheck } from "lucide-react";
 import Hero from "@/components/Hero";
@@ -11,7 +12,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { BackingOptions, CheckList, CtaBanner, Marquee, ProcessSteps, ProductCards, Testimonials, WhyChoose } from "@/components/sections";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
 import { seoKeywords } from "@/lib/catalog";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 import { industries } from "@/lib/industries";
 
 export const metadata: Metadata = {
@@ -52,9 +53,9 @@ export default function Home() {
           <div className="relative order-2 lg:order-1 lg:col-span-6">
             <Reveal>
               <div className="relative mx-auto max-w-lg pb-16 pr-10 sm:pr-24">
-                <Photo photo={media.production.head} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 40vw" position="50% 60%" />
+                <PhotoSlideshow photos={slides.production} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 40vw" position="50% 60%" />
                 <div className="absolute bottom-0 right-0 w-1/2 overflow-hidden rounded-xl border-4 border-ink shadow-2xl">
-                  <Photo photo={media.detail.merrowed} className="aspect-square" sizes="25vw" />
+                  <PhotoSlideshow photos={slides.details} start={2} className="aspect-square" sizes="25vw" />
                 </div>
                 <div className="absolute -left-3 top-8 rounded-lg border border-white/10 bg-ink/90 px-5 py-4 shadow-xl backdrop-blur sm:-left-6">
                   <p className="font-display text-3xl text-white">3 + 3</p>
@@ -93,7 +94,10 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading eyebrow="Our Products" title="Our main product categories" text="Three patch manufacturing methods – each fully customizable and available with iron-on, sew-on or Velcro backing." />
             <Reveal>
-              <Link href="/products/" className="btn-ghost">All products</Link>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/catalogue/" className="btn-ghost">View catalogue</Link>
+                <Link href="/products/" className="btn-ghost">All products</Link>
+              </div>
             </Reveal>
           </div>
           <div className="mt-14">
@@ -122,13 +126,13 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4 lg:col-span-7">
             <Reveal className="row-span-2">
-              <Photo photo={media.production.line} className="h-full min-h-[420px] rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Production line" />
+              <PhotoSlideshow photos={slides.line} className="h-full min-h-[420px] rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Production line" />
             </Reveal>
             <Reveal delay={0.1}>
-              <Photo photo={media.production.headAlt} className="aspect-square rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" position="50% 35%" caption="Needle bars & tensioners" />
+              <PhotoSlideshow photos={slides.machines} start={1} className="aspect-square rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" position="50% 35%" caption="Needle bars & tensioners" />
             </Reveal>
             <Reveal delay={0.2}>
-              <Photo photo={media.detail.rays} className="aspect-square rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Finished stitch detail" />
+              <PhotoSlideshow photos={slides.details} start={1} className="aspect-square rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Finished stitch detail" />
             </Reveal>
           </div>
         </div>
@@ -243,7 +247,7 @@ export default function Home() {
           </div>
           <Reveal>
             <div className="grid grid-cols-5 gap-4">
-              <Photo photo={media.bulk.two} className="col-span-5 aspect-[16/7] rounded-xl" sizes="(max-width:1024px) 90vw, 45vw" />
+              <PhotoSlideshow photos={slides.bulk} className="col-span-5 aspect-[16/7] rounded-xl" sizes="(max-width:1024px) 90vw, 45vw" />
               <Photo photo={media.detail.stripes} className="col-span-2 aspect-square rounded-xl" sizes="20vw" />
               <Photo photo={media.detail.anchor} className="col-span-3 aspect-[3/2] rounded-xl" sizes="25vw" />
             </div>

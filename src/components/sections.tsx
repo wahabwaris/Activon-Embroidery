@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PhotoSlideshow from "./PhotoSlideshow";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -27,7 +28,7 @@ import { Reveal, Stagger, StaggerItem, Tilt } from "./motion";
 import { activeProducts, backings, type BackingKey } from "@/lib/catalog";
 import { testimonials } from "@/lib/testimonials";
 import { site } from "@/lib/site";
-import { media } from "@/lib/media";
+import { media, slides } from "@/lib/media";
 
 /* ---------- Product category cards ---------- */
 export function ProductCards({ headingLevel = "h3" }: { headingLevel?: "h2" | "h3" }) {
@@ -44,7 +45,7 @@ export function ProductCards({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
             >
               <div className="relative -mx-6 -mt-6 mb-2 aspect-[4/3] overflow-hidden border-b border-white/10 bg-ink-900">
                 {p.photo ? (
-                  <Photo photo={p.photo} className="!absolute inset-0" sizes="(max-width: 768px) 100vw, 33vw" />
+                  <PhotoSlideshow photos={slides.details} className="!absolute inset-0" sizes="(max-width: 768px) 100vw, 33vw" />
                 ) : (
                   <div className="grain absolute inset-0 grid place-items-center bg-gradient-to-br from-ink-700 to-ink-900 p-10">
                     <PatchArt

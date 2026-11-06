@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 print:hidden transition-all duration-500 ${
         open ? "bg-ink py-5" : scrolled ? "border-b border-brand/20 bg-ink/95 py-3 backdrop-blur-xl" : "border-b border-white/[0.06] bg-ink py-5"
       }`}
     >
