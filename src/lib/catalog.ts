@@ -7,6 +7,8 @@
  * and set `active: true` once it is officially offered.
  */
 
+import { media, type Photo } from "./media";
+
 export type ProductKey = "embroidered" | "sublimation" | "woven";
 export type BackingKey = "iron-on" | "sew-on" | "velcro";
 export type ShapeKey = "circle" | "shield" | "rectangle" | "rounded" | "hexagon" | "custom";
@@ -64,6 +66,8 @@ export type Product = {
   faqs: { q: string; a: string }[];
   hashtags: string[];
   art: { palette: [string, string, string]; label: string };
+  /** Real photo of this patch type, when available. */
+  photo?: Photo;
 };
 
 export const products: Product[] = [
@@ -112,6 +116,7 @@ export const products: Product[] = [
     ],
     hashtags: ["#CustomEmbroideredPatches", "#EmbroideredPatches", "#EmbroideryPatch", "#CustomPatches", "#PatchManufacturer", "#WholesalePatches", "#IronOnPatches", "#SewOnPatches", "#VelcroPatches", "#LogoPatch"],
     art: { palette: ["#e1251b", "#0d0d0f", "#f2f3f5"], label: "EMB" },
+    photo: media.detail.starLaurel,
   },
   {
     key: "sublimation",

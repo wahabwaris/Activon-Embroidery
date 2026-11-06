@@ -7,9 +7,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import PatchArt from "./PatchArt";
 import { galleryFilters, galleryItems, type GalleryFilter, type GalleryItem } from "@/lib/gallery";
 
-function Visual({ item, className }: { item: GalleryItem; className?: string }) {
-  if (item.src) return <Image src={item.src} alt={item.alt} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />;
-  return <PatchArt {...item.art} className={className} ariaLabel={item.alt} />;
+function Visual({ item, className, large }: { item: GalleryItem; className?: string; large?: boolean }) {
+  if (item.src) return <Image src={item.src} alt={item.alt} fill sizes={large ? "90vw" : "(max-width:768px) 50vw, 25vw"} className={large ? "object-contain" : "object-cover"} />;
+  return item.art ? <PatchArt {...item.art} className={className} ariaLabel={item.alt} /> : null;
 }
 
 export default function Gallery({ withFilters = true, limit }: { withFilters?: boolean; limit?: number }) {
@@ -45,7 +45,7 @@ export default function Gallery({ withFilters = true, limit }: { withFilters?: b
     <div>
       {withFilters && (
         <div className="mb-10 flex flex-wrap gap-2" role="toolbar" aria-label="Gallery filters">
-          {galleryFilters.map((f, i) => (
+          {galleryFilters.filter((f) => f.key === "all" || galleryItems.some((g) => g.tags.includes(f.key as GalleryFilter))).map((f, i) => (
             <button
               key={f.key}
               type="button"
@@ -53,7 +53,7 @@ export default function Gallery({ withFilters = true, limit }: { withFilters?: b
               aria-pressed={filter === f.key}
               className={`relative rounded-full border px-4 py-2 text-sm transition ${
                 filter === f.key ? "border-brand text-white" : "border-white/10 text-silver-300 hover:border-white/30 hover:text-white"
-              } ${i === 4 || i === 7 ? "md:ml-4" : ""}`}
+              }`}
             >
               {filter === f.key && <motion.span layoutId="gal-pill" className="absolute inset-0 -z-10 rounded-full bg-brand/20" />}
               {f.label}
@@ -79,7 +79,7 @@ export default function Gallery({ withFilters = true, limit }: { withFilters?: b
                 className="group relative block aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-700 to-ink-900 text-left"
                 aria-label={`View larger: ${item.title}`}
               >
-                <div className="absolute inset-0 grid place-items-center p-6 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-[-4deg]">
+                <div className={`absolute inset-0 grid place-items-center transition-transform duration-700 group-hover:scale-110 ${item.src ? "" : "p-6 group-hover:rotate-[-4deg]"}`}>
                   <Visual item={item} className="h-full w-full" />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink via-ink/70 to-transparent p-4 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -119,11 +119,11 @@ export default function Gallery({ withFilters = true, limit }: { withFilters?: b
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 200, damping: 22 }}
-              className="w-full max-w-xl"
+              className="w-full max-w-4xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative mx-auto aspect-square w-full max-w-[min(70vh,560px)]">
-                <Visual item={current} className="h-full w-full" />
+              <div className={`relative mx-auto w-full ${current.src ? "h-[70vh]" : "aspect-square max-w-[min(70vh,560px)]"}`}>
+                <Visual item={current} className="h-full w-full" large />
               </div>
               <figcaption className="mt-6 text-center">
                 <p className="font-display text-2xl uppercase text-white">{current.title}</p>

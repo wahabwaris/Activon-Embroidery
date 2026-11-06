@@ -34,8 +34,17 @@ export const nav: NavItem[] = [
       { label: "Woven Patches", href: "/woven-patches/" },
     ],
   },
-  { label: "Custom Manufacturing", href: "/custom-patch-manufacturing/" },
-  { label: "OEM & Private Label", href: "/oem-private-label/" },
+  {
+    label: "Services",
+    href: "/services/",
+    children: [
+      { label: "All Services", href: "/services/" },
+      { label: "Custom Manufacturing", href: "/custom-patch-manufacturing/" },
+      { label: "OEM & Private Label", href: "/oem-private-label/" },
+    ],
+  },
+  { label: "Industries", href: "/industries/" },
+  { label: "Global Presence", href: "/global-presence/" },
   { label: "Gallery", href: "/gallery/" },
   { label: "Contact Us", href: "/contact-us/" },
 ];

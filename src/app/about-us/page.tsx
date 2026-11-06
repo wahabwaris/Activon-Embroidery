@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Globe, Handshake, Layers, Palette, Target, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import PatchArt from "@/components/PatchArt";
+import Photo from "@/components/Photo";
+import { media } from "@/lib/media";
 import SectionHeading from "@/components/SectionHeading";
-import { Float, Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { CtaBanner, ProductCards } from "@/components/sections";
 import { pageMetadata } from "@/lib/seo";
 
@@ -32,9 +33,9 @@ export default function About() {
         lead="Activon Embroidery is a custom patch manufacturing partner for brands, businesses, teams and wholesalers around the world."
         crumbs={[{ name: "About Us", path: "/about-us/" }]}
         aside={
-          <Float parallax={30} className="mx-auto w-full max-w-[380px]">
-            <PatchArt type="embroidered" shape="custom" palette={["#e1251b", "#151518", "#ffffff"]} title="ACTIVON" className="w-full" ariaLabel="Activon Embroidery custom patch" />
-          </Float>
+          <Reveal>
+            <Photo photo={media.production.lineAlt} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 40%" />
+          </Reveal>
         }
       />
 
@@ -82,6 +83,16 @@ export default function About() {
           <div className="mt-12">
             <ProductCards />
           </div>
+        </div>
+      </section>
+
+      <section className="pb-4 pt-20 md:pt-28">
+        <div className="container grid grid-cols-2 gap-4 md:grid-cols-4">
+          {[media.production.head, media.detail.starLaurel, media.detail.merrowed, media.production.hoop].map((ph, i) => (
+            <Reveal key={ph.src} delay={i * 0.08}>
+              <Photo photo={ph} className="aspect-[3/4] rounded-3xl" sizes="(max-width:768px) 50vw, 25vw" position={i % 3 === 0 ? "50% 60%" : "center"} />
+            </Reveal>
+          ))}
         </div>
       </section>
 

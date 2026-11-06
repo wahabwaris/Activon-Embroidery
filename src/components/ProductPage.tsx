@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import PageHero from "./PageHero";
 import PatchArt from "./PatchArt";
+import Photo from "./Photo";
+import { media } from "@/lib/media";
 import SectionHeading from "./SectionHeading";
 import QuoteForm from "./QuoteForm";
 import Faq from "./Faq";
@@ -49,9 +51,20 @@ export default function ProductPage({ productKey }: { productKey: ProductKey }) 
           { name: p.name, path },
         ]}
         aside={
+          p.photo ? (
+            <Reveal>
+              <div className="relative mx-auto max-w-md pb-10 pl-10">
+                <Photo photo={media.production.head} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
+                <div className="absolute bottom-0 left-0 w-1/2 overflow-hidden rounded-3xl border-4 border-ink shadow-2xl">
+                  <Photo photo={p.photo} className="aspect-square" sizes="20vw" />
+                </div>
+              </div>
+            </Reveal>
+          ) : (
           <Float parallax={40} className="mx-auto w-full max-w-[420px]">
-            <PatchArt type={p.key} shape={p.key === "woven" ? "rounded" : p.key === "sublimation" ? "shield" : "circle"} palette={p.art.palette} subtitle={p.name.split(" ")[0].toUpperCase()} className="w-full" ariaLabel={`Custom ${p.name.toLowerCase()} example`} />
+            <PatchArt type={p.key} shape={p.key === "woven" ? "rounded" : p.key === "sublimation" ? "shield" : "circle"} palette={p.art.palette} subtitle={p.name.split(" ")[0].toUpperCase()} className="w-full" ariaLabel={`Illustration of a custom ${p.singular.toLowerCase()}`} />
           </Float>
+          )
         }
       >
         <a href="#customize" className="btn-primary">
@@ -73,6 +86,18 @@ export default function ProductPage({ productKey }: { productKey: ProductKey }) 
           </Reveal>
         </div>
       </section>
+
+      {p.key === "embroidered" && (
+        <section className="pt-20 md:pt-28">
+          <div className="container grid grid-cols-2 gap-4 md:grid-cols-4">
+            {[media.detail.rays, media.detail.merrowed, media.detail.checker, media.detail.stripes].map((ph, i) => (
+              <Reveal key={ph.src} delay={i * 0.08}>
+                <Photo photo={ph} className="aspect-square rounded-3xl" sizes="(max-width:768px) 50vw, 25vw" />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Design customization */}
       <section className="section">

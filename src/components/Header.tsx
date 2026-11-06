@@ -12,7 +12,7 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
+  const [menu, setMenu] = useState<string | null>(null);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
@@ -25,7 +25,7 @@ export default function Header() {
 
   useEffect(() => {
     setOpen(false);
-    setProductsOpen(false);
+    setMenu(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -51,23 +51,23 @@ export default function Header() {
                 <li
                   key={item.href}
                   className="relative"
-                  onMouseEnter={() => setProductsOpen(true)}
-                  onMouseLeave={() => setProductsOpen(false)}
+                  onMouseEnter={() => setMenu(item.href)}
+                  onMouseLeave={() => setMenu(null)}
                 >
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 rounded-full px-3.5 py-2 text-[13px] font-medium transition ${
+                    className={`flex items-center gap-1 rounded-full px-3 py-2 text-[13px] font-medium transition ${
                       isActive(item.href) || item.children.some((c) => isActive(c.href)) ? "text-white" : "text-silver-300 hover:text-white"
                     }`}
                     aria-haspopup="true"
-                    aria-expanded={productsOpen}
-                    onFocus={() => setProductsOpen(true)}
+                    aria-expanded={menu === item.href}
+                    onFocus={() => setMenu(item.href)}
                   >
                     {item.label}
-                    <ChevronDown className={`h-3.5 w-3.5 transition ${productsOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`h-3.5 w-3.5 transition ${menu === item.href ? "rotate-180" : ""}`} />
                   </Link>
                   <AnimatePresence>
-                    {productsOpen && (
+                    {menu === item.href && (
                       <motion.div
                         initial={{ opacity: 0, y: 10, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -87,9 +87,11 @@ export default function Header() {
                               </Link>
                             </li>
                           ))}
-                          <li className="mt-1 border-t border-white/10 px-4 py-3 text-[11px] uppercase tracking-wider text-silver-500">
-                            Iron-on · Sew-on · Velcro backing on every type
-                          </li>
+                          {item.href === "/products/" && (
+                            <li className="mt-1 border-t border-white/10 px-4 py-3 text-[11px] uppercase tracking-wider text-silver-500">
+                              Iron-on · Sew-on · Velcro backing on every type
+                            </li>
+                          )}
                         </ul>
                       </motion.div>
                     )}
@@ -99,7 +101,7 @@ export default function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`relative rounded-full px-3.5 py-2 text-[13px] font-medium transition ${
+                    className={`relative rounded-full px-3 py-2 text-[13px] font-medium transition ${
                       isActive(item.href) ? "text-white" : "text-silver-300 hover:text-white"
                     }`}
                   >

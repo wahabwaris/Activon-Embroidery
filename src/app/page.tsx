@@ -1,34 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, FileCheck, MessageSquare, Package, Plane, ScanLine, ShieldCheck } from "lucide-react";
 import Hero from "@/components/Hero";
-import PatchArt from "@/components/PatchArt";
+import Photo from "@/components/Photo";
 import SectionHeading from "@/components/SectionHeading";
 import Gallery from "@/components/Gallery";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
-import { Float, Reveal } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { BackingOptions, CheckList, CtaBanner, Marquee, ProcessSteps, ProductCards, Testimonials, WhyChoose } from "@/components/sections";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
 import { seoKeywords } from "@/lib/catalog";
+import { media } from "@/lib/media";
+import { industries } from "@/lib/industries";
 
 export const metadata: Metadata = {
   ...pageMetadata({
     title: "Custom Patch Manufacturer | Embroidered, Sublimation & Woven Patches",
     description:
-      "Activon Embroidery is a custom patch manufacturer for brands worldwide. Wholesale embroidered, sublimation and woven patches with iron-on, sew-on or Velcro backing. OEM & private label. Get a quote.",
+      "Activon Embroidery is a custom patch manufacturer and exporter for brands worldwide. Wholesale embroidered, sublimation and woven patches with iron-on, sew-on or Velcro backing. OEM & private label. Get a quote.",
     path: "/",
     keywords: [...seoKeywords.shortTail, ...seoKeywords.longTail.slice(0, 6)],
   }),
-  title: { absolute: "Custom Patch Manufacturer | Embroidered, Sublimation & Woven Patches | Activon Embroidery" },
+  title: { absolute: "Custom Patch Manufacturer & Exporter | Embroidered, Sublimation & Woven Patches | Activon Embroidery" },
 };
 
 const homeFaqs = [
   { q: "What types of custom patches does Activon Embroidery manufacture?", a: "We manufacture three main patch types: embroidered patches, sublimation patches and woven patches. Each can be customized in shape, size, colours, border and backing." },
   { q: "Are iron-on, sew-on and Velcro patches separate products?", a: "No. Iron-on, sew-on and Velcro (hook-and-loop) are backing options you can choose for any of our three patch types – embroidered, sublimation or woven – subject to technical compatibility." },
   { q: "Do you accept wholesale, bulk and OEM / private-label orders?", a: "Yes. Activon Embroidery focuses on wholesale and bulk production for brands, clothing manufacturers, uniform suppliers, teams, clubs, promotional companies and distributors, including OEM and private-label projects." },
-  { q: "Do you ship custom patches internationally?", a: "Yes. We work with customers worldwide and ship orders internationally. Shipping options and costs are included with your quotation." },
+  { q: "Do you ship custom patches internationally?", a: "Yes. We work with customers worldwide and ship orders internationally. The shipping method and cost are confirmed with your quotation." },
   { q: "How do I get a quote for custom patches?", a: "Use our Get a Quote form to share your design, patch type, size, quantity and backing preference. Our team will review it and reply by email or WhatsApp." },
+];
+
+const exportSteps = [
+  { icon: MessageSquare, t: "Clear communication", d: "Direct contact by email and WhatsApp throughout your order." },
+  { icon: FileCheck, t: "Approved artwork proof", d: "Nothing goes into production before you approve the proof." },
+  { icon: Package, t: "Export-ready packing", d: "Patches counted and packed to your requirements." },
+  { icon: Plane, t: "International delivery", d: "Shipping method and cost agreed in your quotation." },
 ];
 
 export default function Home() {
@@ -36,26 +45,26 @@ export default function Home() {
     <>
       <JsonLd data={faqJsonLd(homeFaqs)} />
       <Hero />
-      <Marquee items={["Custom Embroidered Patches", "Sublimation Patches", "Woven Patches", "Iron-On Backing", "Sew-On Backing", "Velcro Backing", "Wholesale", "OEM & Private Label", "Worldwide Shipping"]} />
 
-      {/* 2 – About */}
+      {/* About */}
       <section id="about" className="section relative overflow-hidden">
-        <div className="container grid items-center gap-16 lg:grid-cols-2">
-          <div className="relative order-2 lg:order-1">
-            <div className="relative mx-auto aspect-square max-w-md">
-              <div className="absolute inset-0 rounded-[3rem] border border-white/10 bg-gradient-to-br from-ink-700 to-ink-900" />
-              <div className="stitch-line absolute inset-x-10 top-10 h-[2px] opacity-50" />
-              <div className="stitch-line absolute inset-x-10 bottom-10 h-[2px] opacity-50" />
-              <Float className="absolute inset-[14%]" parallax={30}>
-                <PatchArt type="embroidered" shape="shield" palette={["#e1251b", "#151518", "#f2f3f5"]} title="CRAFT" className="w-full" ariaLabel="Custom embroidered shield patch" />
-              </Float>
-            </div>
+        <div className="container grid items-center gap-14 lg:grid-cols-12">
+          <div className="relative order-2 lg:order-1 lg:col-span-6">
+            <Reveal>
+              <div className="relative mx-auto max-w-lg pb-16 pr-10 sm:pr-24">
+                <Photo photo={media.production.head} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 40vw" position="50% 60%" />
+                <div className="absolute bottom-0 right-0 w-1/2 overflow-hidden rounded-3xl border-4 border-ink shadow-2xl">
+                  <Photo photo={media.detail.merrowed} className="aspect-square" sizes="25vw" />
+                </div>
+                <div className="absolute -left-3 top-8 rounded-2xl border border-white/10 bg-ink/90 px-5 py-4 shadow-xl backdrop-blur sm:-left-6">
+                  <p className="font-display text-3xl text-white">3 + 3</p>
+                  <p className="text-[11px] uppercase tracking-wider text-silver-300">Patch types · Backings</p>
+                </div>
+              </div>
+            </Reveal>
           </div>
-          <div className="order-1 lg:order-2">
-            <SectionHeading
-              eyebrow="About Activon Embroidery"
-              title="Your trusted custom patch manufacturing partner"
-            />
+          <div className="order-1 lg:order-2 lg:col-span-6">
+            <SectionHeading eyebrow="About Activon Embroidery" title="Your trusted custom patch manufacturing partner" />
             <Reveal delay={0.15}>
               <div className="prose-a mt-6">
                 <p>
@@ -76,8 +85,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3 – Products */}
-      <section className="section relative border-t border-white/10 bg-ink-900">
+      <Marquee items={["Custom Embroidered Patches", "Sublimation Patches", "Woven Patches", "Iron-On Backing", "Sew-On Backing", "Velcro Backing", "Wholesale", "OEM & Private Label", "Worldwide Shipping"]} />
+
+      {/* Products */}
+      <section className="section relative bg-ink-900">
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading eyebrow="Our Products" title="Our main product categories" text="Three patch manufacturing methods – each fully customizable and available with iron-on, sew-on or Velcro backing." />
@@ -91,8 +102,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4 – Backing */}
-      <section className="section">
+      {/* Production */}
+      <section className="section relative overflow-hidden">
+        <div className="container grid gap-14 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              eyebrow="Production"
+              title="Built on multi-head embroidery production"
+              text="Your patches are produced on multi-head embroidery machines that stitch many pieces at once – the setup that makes consistent bulk and repeat orders possible."
+            />
+            <Reveal delay={0.15}>
+              <div className="mt-8">
+                <CheckList cols={1} items={["Artwork digitized and proofed before production", "Multi-head machines for bulk volumes", "Consistent colours across repeat orders", "Quality inspection before packing"]} />
+              </div>
+              <Link href="/custom-patch-manufacturing/" className="btn-ghost mt-9">
+                How we manufacture <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+          <div className="grid grid-cols-2 gap-4 lg:col-span-7">
+            <Reveal className="row-span-2">
+              <Photo photo={media.production.line} className="h-full min-h-[420px] rounded-3xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Production line" />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Photo photo={media.production.headAlt} className="aspect-square rounded-3xl" sizes="(max-width:1024px) 50vw, 30vw" position="50% 35%" caption="Needle bars & tensioners" />
+            </Reveal>
+            <Reveal delay={0.2}>
+              <Photo photo={media.detail.rays} className="aspect-square rounded-3xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Finished stitch detail" />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Backing */}
+      <section className="section border-t border-white/10 bg-ink-900">
         <div className="container">
           <SectionHeading
             eyebrow="Backing Options"
@@ -111,8 +154,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5 – Why choose */}
-      <section className="section border-t border-white/10 bg-ink-900">
+      {/* Industries – light */}
+      <section className="section section-light">
+        <div className="container">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading light eyebrow="Industries" title="Patches for every industry we serve" text="From fashion labels to uniform suppliers – we match the patch type and backing to how your patches will be used." />
+            <Reveal>
+              <Link href="/industries/" className="btn border border-ink/20 text-ink hover:bg-ink hover:text-white">
+                All industries <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+          <Stagger className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+            {industries.map((ind) => (
+              <StaggerItem key={ind.name} className="group bg-[#f4f4f2] p-7 transition-colors duration-500 hover:bg-white">
+                <ind.icon className="h-7 w-7 text-brand-600 transition-transform duration-500 group-hover:-translate-y-1" />
+                <h3 className="mt-5 font-semibold text-ink">{ind.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-silver-700">{ind.text}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* Why choose */}
+      <section className="section">
         <div className="container">
           <SectionHeading eyebrow="Why Activon" title="Why choose Activon Embroidery?" />
           <div className="mt-14">
@@ -121,8 +187,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6 – Process */}
-      <section className="section">
+      {/* Process */}
+      <section className="section border-t border-white/10 bg-ink-900">
         <div className="container">
           <SectionHeading eyebrow="How It Works" title="Your design. Your requirements. Our craft." text="A clear, seven-step process from your artwork to patches delivered at your door." />
           <div className="mt-16">
@@ -131,10 +197,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7 – OEM */}
-      <section className="section relative overflow-hidden border-y border-white/10 bg-ink-900">
-        <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(225,37,27,0.18),transparent_60%)] lg:block" />
-        <div className="container relative grid items-center gap-14 lg:grid-cols-2">
+      {/* Global / export */}
+      <section className="relative isolate overflow-hidden py-24 md:py-32">
+        <Photo photo={media.bulk.three} className="!absolute inset-0 -z-20" sizes="100vw" />
+        <div className="absolute inset-0 -z-10 bg-ink/85" />
+        <div className="container grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <SectionHeading eyebrow="Global Presence" title="Manufactured for buyers worldwide" text="We work with international customers remotely – from first inquiry to delivery – with clear communication and export-ready packing." />
+            <Reveal delay={0.15}>
+              <Link href="/global-presence/" className="btn-primary mt-9">
+                Ordering from abroad <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+          <Stagger className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+            {exportSteps.map((s) => (
+              <StaggerItem key={s.t}>
+                <div className="h-full rounded-3xl border border-white/10 bg-ink/60 p-7 backdrop-blur-md">
+                  <s.icon className="h-7 w-7 text-brand-400" />
+                  <h3 className="mt-5 font-semibold text-white">{s.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-silver-300">{s.d}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* OEM */}
+      <section className="section">
+        <div className="container grid items-center gap-14 lg:grid-cols-2">
           <div>
             <SectionHeading eyebrow="OEM & Private Label" title="OEM & private label patch manufacturing" />
             <Reveal delay={0.1}>
@@ -149,28 +241,21 @@ export default function Home() {
               </Link>
             </Reveal>
           </div>
-          <div className="relative mx-auto grid w-full max-w-md grid-cols-2 gap-5">
-            {(
-              [
-                ["embroidered", "circle", ["#e1251b", "#0d0d0f", "#f2f3f5"], "YOUR"],
-                ["woven", "rounded", ["#0d0d0f", "#a9adb5", "#e1251b"], "BRAND"],
-                ["sublimation", "hexagon", ["#ff4a3d", "#7a0b06", "#ffd1cc"], "HERE"],
-                ["embroidered", "shield", ["#a9adb5", "#1d1d21", "#ffffff"], "OEM"],
-              ] as const
-            ).map(([t, s, p, title], i) => (
-              <Float key={i} duration={6 + i} distance={10} rotate={3} className={i % 2 ? "mt-10" : ""}>
-                <PatchArt type={t} shape={s} palette={[...p] as [string, string, string]} title={title} subtitle="PRIVATE LABEL" className="w-full" ariaLabel="Private label custom patch example" />
-              </Float>
-            ))}
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-5 gap-4">
+              <Photo photo={media.bulk.two} className="col-span-5 aspect-[16/7] rounded-3xl" sizes="(max-width:1024px) 90vw, 45vw" />
+              <Photo photo={media.detail.stripes} className="col-span-2 aspect-square rounded-3xl" sizes="20vw" />
+              <Photo photo={media.detail.anchor} className="col-span-3 aspect-[3/2] rounded-3xl" sizes="25vw" />
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* 8 – Gallery */}
-      <section className="section">
+      {/* Gallery */}
+      <section className="section border-t border-white/10 bg-ink-900">
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading eyebrow="Gallery" title="Product gallery" text="Embroidered, sublimation and woven patches, backing options, custom shapes and production. Click any image to enlarge." />
+            <SectionHeading eyebrow="Gallery" title="Product gallery" text="Production, stitching detail and finished bulk orders. Click any image to enlarge." />
             <Reveal>
               <Link href="/gallery/" className="btn-ghost">View full gallery</Link>
             </Reveal>
@@ -181,14 +266,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9 – Testimonials */}
       <Testimonials />
 
-      {/* SEO FAQ */}
+      {/* FAQ */}
       <section className="section border-t border-white/10 bg-ink-900">
         <div className="container grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SectionHeading eyebrow="FAQ" title="Custom patch questions" text="Quick answers about our patch types, backing options, wholesale orders and worldwide shipping." />
+            <Reveal delay={0.1}>
+              <div className="mt-8 flex items-center gap-3 text-sm text-silver-300">
+                <ScanLine className="h-5 w-5 text-brand-400" />
+                <ShieldCheck className="h-5 w-5 text-brand-400" />
+                Artwork proof before every production run.
+              </div>
+            </Reveal>
           </div>
           <div className="lg:col-span-8">
             <Faq items={homeFaqs} />
@@ -196,7 +287,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10 – Final CTA */}
       <CtaBanner />
     </>
   );

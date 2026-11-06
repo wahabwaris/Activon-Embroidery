@@ -6,23 +6,37 @@ B2B site for a custom patch manufacturer: **3 product categories** (Embroidered,
 Sublimation, Woven) and **3 backing options** (Iron-On, Sew-On, Velcro) that are offered on
 every category – never shown as separate products.
 
-## Run it
+## Run it locally (Windows, macOS or Linux)
+
+1. Install **Node.js 20 or newer** from https://nodejs.org (LTS).
+2. Unzip the project, open a terminal in the `activon-embroidery` folder and run:
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the values
-npm run dev                  # http://localhost:3000
-npm run build && npm start   # production
 ```
+
+3. Copy `.env.example` to `.env.local` (optional for a first look – the site runs without it).
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+5. Open **http://localhost:3000** in your browser.
+
+Production mode (faster, what visitors get): `npm run build` then `npm start`.
 
 ## Pages
 
 | URL | Purpose |
 |---|---|
-| `/` | Home – hero, about, 3 product cards, backing, why us, process, OEM, gallery, feedback, FAQ, CTA |
+| `/` | Home – background-video hero, about, products, production, backing, industries, why us, process, global, OEM, gallery, feedback, FAQ, CTA |
 | `/products/` | All products + comparison table |
 | `/embroidered-patches/` `/sublimation-patches/` `/woven-patches/` | Product pages with SEO content, shapes, borders, backing, applications, FAQ, built-in quote form (category preselected) |
+| `/services/` | Services overview |
 | `/custom-patch-manufacturing/` | Custom manufacturing |
+| `/industries/` | Industries served + recommended patch/backing |
+| `/global-presence/` | Ordering from abroad, export steps, international FAQ |
 | `/oem-private-label/` | OEM & private label |
 | `/gallery/` | Filterable gallery + lightbox |
 | `/contact-us/` | Email, WhatsApp, social, contact form |
@@ -45,12 +59,43 @@ App Password, and put it in `SMTP_PASS`. Without SMTP the form still works and s
 
 1. **WhatsApp number** → `NEXT_PUBLIC_WHATSAPP_NUMBER` (floating button, contact page, footer appear automatically).
 2. **Social links** → `NEXT_PUBLIC_*_URL` (icons appear automatically).
-3. **Real product photos** → put them in `public/gallery/` and set `src` in `src/lib/gallery.ts`.
-   Until then the site uses vector patch illustrations.
+3. **More product photos** – especially sublimation and woven patches and each backing type
+   (those sections still use vector illustrations). See "Media" below.
 4. **Genuine customer reviews** (with permission) → `src/lib/testimonials.ts`. None are invented.
 5. **Domain** → `NEXT_PUBLIC_SITE_URL`.
 6. **Google** → `NEXT_PUBLIC_GA_ID` (Analytics 4) and `GOOGLE_SITE_VERIFICATION` (Search Console),
    then submit `https://your-domain/sitemap.xml` in Search Console.
+
+## Media
+
+- **Hero video:** `public/media/hero-production.mp4` (compressed from the 45 MB original to ~5 MB,
+  720p, no audio). Poster/fallback image: `public/media/photos/production-f1.webp`. The video
+  autoplays muted and looped; on reduced-motion or data-saver devices the poster is shown instead.
+- **Photos:** `public/media/photos/*.webp`, registered in `src/lib/media.ts` (with alt text).
+  Production stills come from the video; detail shots are tight crops of finished patches.
+- **To add photos:** save as WebP/JPG in `public/media/photos/`, add an entry in `src/lib/media.ts`,
+  then use it in `src/lib/gallery.ts` (gallery) or set `photo:` on a product in `src/lib/catalog.ts`.
+- **Only publish designs you own or are authorized to show.** Photos of patches carrying other
+  companies' logos (car makers, sports leagues, clubs, universities, film characters) can trigger
+  takedowns, search removal and customs seizures. The supplied photos were cropped so no
+  third-party logo is readable.
+
+## Brand / logo
+
+The mark is a globe orbited by a running stitch ending in a needle – custom embroidery, delivered worldwide.
+
+| File | Use |
+|---|---|
+| `public/brand/activon-logo-dark-bg.svg` | Full logo for dark backgrounds |
+| `public/brand/activon-logo-light-bg.svg` | Full logo for light backgrounds / documents |
+| `public/brand/activon-logo-on-black.svg` | Full logo with solid black background |
+| `public/brand/activon-mark.svg` / `activon-mark-dark.svg` | Symbol only |
+| `public/brand/activon-avatar-1024.png` / `-512.png` | Social media profile pictures |
+| `src/app/icon.svg`, `src/app/apple-icon.png` | Favicon & iPhone home-screen icon |
+
+Brand colours: Ink `#0D0D0F`, Activon Red `#E1251B`, Silver `#C9CCD2` / `#A9ADB5`, Paper `#F4F4F2`.
+Fonts: Oswald (headings, logo) and Inter (text), both free on Google Fonts. The SVG logo files
+reference these fonts by name, so install Oswald when editing them in a design tool.
 
 ## SEO built in
 

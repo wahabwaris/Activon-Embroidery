@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Building2, Dumbbell, Megaphone, Shirt, ShoppingBag, Sparkles, Truck } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import PatchArt from "@/components/PatchArt";
+import Photo from "@/components/Photo";
+import { media } from "@/lib/media";
 import SectionHeading from "@/components/SectionHeading";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
-import { Float, Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { CheckList, CtaBanner } from "@/components/sections";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -45,9 +46,9 @@ export default function Oem() {
         lead="Your brand. Your design. Our manufacturing. We produce custom patches for businesses that sell, distribute or use them under their own name."
         crumbs={[{ name: "OEM & Private Label", path: "/oem-private-label/" }]}
         aside={
-          <Float parallax={30} className="mx-auto w-full max-w-[380px]">
-            <PatchArt type="woven" shape="shield" palette={["#151518", "#c9ccd2", "#e1251b"]} title="YOUR BRAND" subtitle="PRIVATE LABEL" className="w-full" />
-          </Float>
+          <Reveal>
+            <Photo photo={media.bulk.two} className="aspect-[4/3] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority />
+          </Reveal>
         }
       >
         <Link href="/get-a-quote/" className="btn-primary">

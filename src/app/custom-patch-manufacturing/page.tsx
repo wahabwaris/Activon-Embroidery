@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Boxes, Brush, Layers, Palette, Ruler, ShieldCheck, Tag } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import PatchArt from "@/components/PatchArt";
+import Photo from "@/components/Photo";
+import { media } from "@/lib/media";
 import SectionHeading from "@/components/SectionHeading";
-import { Float, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { BackingOptions, CtaBanner, ProcessSteps } from "@/components/sections";
 import { pageMetadata } from "@/lib/seo";
 
@@ -35,9 +36,9 @@ export default function CustomManufacturing() {
         lead="Create patches made to your exact requirements – from artwork and patch type to size, shape, colours, border and backing."
         crumbs={[{ name: "Custom Manufacturing", path: "/custom-patch-manufacturing/" }]}
         aside={
-          <Float parallax={30} className="mx-auto w-full max-w-[380px]">
-            <PatchArt type="sublimation" shape="hexagon" palette={["#ff4a3d", "#0d0d0f", "#ffe0dc"]} title="CUSTOM" subtitle="MADE TO ORDER" className="w-full" />
-          </Float>
+          <Reveal>
+            <Photo photo={media.production.hoop} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 55%" />
+          </Reveal>
         }
       >
         <Link href="/get-a-quote/" className="btn-primary">
@@ -63,6 +64,20 @@ export default function CustomManufacturing() {
       </section>
 
       <section className="section">
+        <div className="container grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeading eyebrow="Production" title="Multi-head embroidery production" text="Embroidered orders run on multi-head machines that stitch many patches simultaneously – keeping bulk orders consistent and efficient." />
+          </div>
+          <Reveal>
+            <div className="grid grid-cols-2 gap-4">
+              <Photo photo={media.production.line} className="aspect-[3/4] rounded-3xl" sizes="25vw" />
+              <Photo photo={media.production.headAlt} className="aspect-[3/4] rounded-3xl" sizes="25vw" position="50% 35%" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section border-t border-white/10 bg-ink-900">
         <div className="container">
           <SectionHeading eyebrow="Backing" title="Iron-on, sew-on & Velcro backing" text="Available across embroidered, sublimation and woven patches, subject to compatibility." />
           <div className="mt-12">
@@ -71,7 +86,7 @@ export default function CustomManufacturing() {
         </div>
       </section>
 
-      <section className="section border-t border-white/10 bg-ink-900">
+      <section className="section">
         <div className="container">
           <SectionHeading eyebrow="Process" title="From design to delivery" />
           <div className="mt-16">

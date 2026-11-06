@@ -21,11 +21,13 @@ import {
   Upload,
 } from "lucide-react";
 import PatchArt from "./PatchArt";
+import Photo from "./Photo";
 import SectionHeading from "./SectionHeading";
 import { Reveal, Stagger, StaggerItem, Tilt } from "./motion";
 import { activeProducts, backings, type BackingKey } from "@/lib/catalog";
 import { testimonials } from "@/lib/testimonials";
 import { site } from "@/lib/site";
+import { media } from "@/lib/media";
 
 /* ---------- Product category cards ---------- */
 export function ProductCards({ headingLevel = "h3" }: { headingLevel?: "h2" | "h3" }) {
@@ -40,18 +42,23 @@ export function ProductCards({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
               href={`/${p.slug}/`}
               className="group card relative flex h-full flex-col overflow-hidden p-6 transition-colors duration-500 hover:border-brand/50"
             >
-              <span className="absolute right-6 top-6 font-display text-6xl text-white/5">0{i + 1}</span>
-              <div className="relative mx-auto aspect-square w-full max-w-[260px]">
-                <div className="absolute inset-8 rounded-full bg-brand/0 blur-3xl transition duration-700 group-hover:bg-brand/30" />
-                <PatchArt
-                  type={p.key}
-                  shape={shapesFor[p.key]}
-                  palette={p.art.palette}
-                  title="ACTIVON"
-                  subtitle={p.name.split(" ")[0].toUpperCase()}
-                  className="relative h-full w-full transition-transform duration-700 group-hover:rotate-[-6deg] group-hover:scale-105"
-                  ariaLabel={`Example of custom ${p.name.toLowerCase()}`}
-                />
+              <div className="relative -mx-6 -mt-6 mb-2 aspect-[4/3] overflow-hidden border-b border-white/10 bg-ink-900">
+                {p.photo ? (
+                  <Photo photo={p.photo} className="!absolute inset-0" sizes="(max-width: 768px) 100vw, 33vw" />
+                ) : (
+                  <div className="grain absolute inset-0 grid place-items-center bg-gradient-to-br from-ink-700 to-ink-900 p-10">
+                    <PatchArt
+                      type={p.key}
+                      shape={shapesFor[p.key]}
+                      palette={p.art.palette}
+                      title="ACTIVON"
+                      subtitle={p.name.split(" ")[0].toUpperCase()}
+                      className="h-full w-auto transition-transform duration-700 group-hover:rotate-[-6deg] group-hover:scale-105"
+                      ariaLabel={`Illustration of a custom ${p.singular.toLowerCase()}`}
+                    />
+                  </div>
+                )}
+                <span className="absolute left-5 top-5 rounded-full bg-ink/70 px-3 py-1 font-display text-sm tracking-wider text-white backdrop-blur">0{i + 1}</span>
               </div>
               <H className="mt-6 font-display text-2xl uppercase text-white">{p.name}</H>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-silver-300">{p.cardText}</p>
@@ -170,18 +177,18 @@ export function CtaBanner({
     <section className="section">
       <div className="container">
         <Reveal>
-          <div className="relative overflow-hidden rounded-[2rem] bg-brand px-6 py-16 text-center sm:px-12 md:py-24">
-            <div className="grid-lines absolute inset-0 opacity-60" />
-            <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
-            <div className="absolute -bottom-24 -right-10 h-80 w-80 rounded-full bg-ink/40 blur-3xl" />
+          <div className="relative isolate overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-12 md:py-24">
+            <Photo photo={media.bulk.two} className="!absolute inset-0 -z-20" sizes="100vw" />
+            <div className="absolute inset-0 -z-10 bg-ink/80" />
+            <div className="absolute inset-x-0 top-0 -z-10 h-1 bg-brand" />
             <div className="relative">
               <h2 className="h-display mx-auto max-w-4xl text-4xl text-white md:text-6xl">{title}</h2>
-              <p className="mx-auto mt-6 max-w-2xl text-white/85 md:text-lg">{text}</p>
+              <p className="mx-auto mt-6 max-w-2xl text-silver-200 md:text-lg">{text}</p>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Link href={primary.href} className="btn bg-white text-ink hover:bg-ink hover:text-white">
+                <Link href={primary.href} className="btn-primary">
                   {primary.label} <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href={secondary.href} className="btn border border-white/50 text-white hover:bg-white/10">
+                <Link href={secondary.href} className="btn-ghost">
                   {secondary.label}
                 </Link>
               </div>
