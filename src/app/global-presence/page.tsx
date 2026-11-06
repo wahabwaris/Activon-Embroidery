@@ -45,7 +45,7 @@ export default function GlobalPresence() {
         crumbs={[{ name: "Global Presence", path: "/global-presence/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.bulk.one} className="aspect-[4/3] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority />
+            <Photo photo={media.bulk.one} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
           </Reveal>
         }
       >
@@ -77,14 +77,14 @@ export default function GlobalPresence() {
           <div className="lg:col-span-5">
             <SectionHeading eyebrow="How It Works" title="Ordering from abroad in five steps" />
             <Reveal delay={0.1}>
-              <Photo photo={media.production.line} className="mt-10 hidden aspect-[4/5] rounded-[2rem] lg:block" sizes="35vw" />
+              <Photo photo={media.production.line} className="mt-10 hidden aspect-[4/5] rounded-xl lg:block" sizes="35vw" />
             </Reveal>
           </div>
           <Stagger className="relative grid gap-4 lg:col-span-7">
             {steps.map((s, i) => (
               <StaggerItem key={s.t}>
                 <div className="card flex gap-5 p-6 md:p-7">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand text-white">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-brand text-ink">
                     <s.icon className="h-5 w-5" />
                   </span>
                   <div>

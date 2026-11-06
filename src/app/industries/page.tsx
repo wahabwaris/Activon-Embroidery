@@ -28,7 +28,7 @@ export default function Industries() {
         crumbs={[{ name: "Industries", path: "/industries/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.bulk.three} className="aspect-[4/3] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority />
+            <Photo photo={media.bulk.three} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
           </Reveal>
         }
       />
@@ -39,8 +39,8 @@ export default function Industries() {
           <Stagger className="mt-12 grid gap-5 md:grid-cols-2">
             {industries.map((ind) => (
               <StaggerItem key={ind.name}>
-                <article className="group flex h-full gap-5 rounded-3xl border border-ink/10 bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand/10 text-brand-600">
+                <article className="group flex h-full gap-5 rounded-xl border border-ink/10 bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-brand/15 text-brand-700">
                     <ind.icon className="h-6 w-6" />
                   </span>
                   <div>
@@ -63,7 +63,7 @@ export default function Industries() {
       <section className="section">
         <div className="container grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <Photo photo={media.production.lineWide} className="aspect-[4/3] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 45vw" position="50% 40%" />
+            <Photo photo={media.production.lineWide} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 45vw" position="50% 40%" />
           </Reveal>
           <div>
             <SectionHeading eyebrow="Not sure what fits?" title="Tell us how the patch will be used" text="Share the product, garment or application and we'll recommend the patch type, border and backing – with a quotation for your quantity." />

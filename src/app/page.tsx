@@ -52,11 +52,11 @@ export default function Home() {
           <div className="relative order-2 lg:order-1 lg:col-span-6">
             <Reveal>
               <div className="relative mx-auto max-w-lg pb-16 pr-10 sm:pr-24">
-                <Photo photo={media.production.head} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 40vw" position="50% 60%" />
-                <div className="absolute bottom-0 right-0 w-1/2 overflow-hidden rounded-3xl border-4 border-ink shadow-2xl">
+                <Photo photo={media.production.head} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 40vw" position="50% 60%" />
+                <div className="absolute bottom-0 right-0 w-1/2 overflow-hidden rounded-xl border-4 border-ink shadow-2xl">
                   <Photo photo={media.detail.merrowed} className="aspect-square" sizes="25vw" />
                 </div>
-                <div className="absolute -left-3 top-8 rounded-2xl border border-white/10 bg-ink/90 px-5 py-4 shadow-xl backdrop-blur sm:-left-6">
+                <div className="absolute -left-3 top-8 rounded-lg border border-white/10 bg-ink/90 px-5 py-4 shadow-xl backdrop-blur sm:-left-6">
                   <p className="font-display text-3xl text-white">3 + 3</p>
                   <p className="text-[11px] uppercase tracking-wider text-silver-300">Patch types · Backings</p>
                 </div>
@@ -122,13 +122,13 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4 lg:col-span-7">
             <Reveal className="row-span-2">
-              <Photo photo={media.production.line} className="h-full min-h-[420px] rounded-3xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Production line" />
+              <Photo photo={media.production.line} className="h-full min-h-[420px] rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Production line" />
             </Reveal>
             <Reveal delay={0.1}>
-              <Photo photo={media.production.headAlt} className="aspect-square rounded-3xl" sizes="(max-width:1024px) 50vw, 30vw" position="50% 35%" caption="Needle bars & tensioners" />
+              <Photo photo={media.production.headAlt} className="aspect-square rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" position="50% 35%" caption="Needle bars & tensioners" />
             </Reveal>
             <Reveal delay={0.2}>
-              <Photo photo={media.detail.rays} className="aspect-square rounded-3xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Finished stitch detail" />
+              <Photo photo={media.detail.rays} className="aspect-square rounded-xl" sizes="(max-width:1024px) 50vw, 30vw" caption="Finished stitch detail" />
             </Reveal>
           </div>
         </div>
@@ -165,10 +165,10 @@ export default function Home() {
               </Link>
             </Reveal>
           </div>
-          <Stagger className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+          <Stagger className="mt-14 grid gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((ind) => (
               <StaggerItem key={ind.name} className="group bg-[#f4f4f2] p-7 transition-colors duration-500 hover:bg-white">
-                <ind.icon className="h-7 w-7 text-brand-600 transition-transform duration-500 group-hover:-translate-y-1" />
+                <ind.icon className="h-7 w-7 text-brand-700 transition-transform duration-500 group-hover:-translate-y-1" />
                 <h3 className="mt-5 font-semibold text-ink">{ind.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-silver-700">{ind.text}</p>
               </StaggerItem>
@@ -213,7 +213,7 @@ export default function Home() {
           <Stagger className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             {exportSteps.map((s) => (
               <StaggerItem key={s.t}>
-                <div className="h-full rounded-3xl border border-white/10 bg-ink/60 p-7 backdrop-blur-md">
+                <div className="h-full rounded-xl border border-white/10 bg-ink/60 p-7 backdrop-blur-md">
                   <s.icon className="h-7 w-7 text-brand-400" />
                   <h3 className="mt-5 font-semibold text-white">{s.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-silver-300">{s.d}</p>
@@ -243,9 +243,9 @@ export default function Home() {
           </div>
           <Reveal>
             <div className="grid grid-cols-5 gap-4">
-              <Photo photo={media.bulk.two} className="col-span-5 aspect-[16/7] rounded-3xl" sizes="(max-width:1024px) 90vw, 45vw" />
-              <Photo photo={media.detail.stripes} className="col-span-2 aspect-square rounded-3xl" sizes="20vw" />
-              <Photo photo={media.detail.anchor} className="col-span-3 aspect-[3/2] rounded-3xl" sizes="25vw" />
+              <Photo photo={media.bulk.two} className="col-span-5 aspect-[16/7] rounded-xl" sizes="(max-width:1024px) 90vw, 45vw" />
+              <Photo photo={media.detail.stripes} className="col-span-2 aspect-square rounded-xl" sizes="20vw" />
+              <Photo photo={media.detail.anchor} className="col-span-3 aspect-[3/2] rounded-xl" sizes="25vw" />
             </div>
           </Reveal>
         </div>

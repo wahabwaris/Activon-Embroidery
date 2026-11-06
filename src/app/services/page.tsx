@@ -36,7 +36,7 @@ export default function Services() {
         crumbs={[{ name: "Services", path: "/services/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.production.head} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
+            <Photo photo={media.production.head} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
           </Reveal>
         }
       >

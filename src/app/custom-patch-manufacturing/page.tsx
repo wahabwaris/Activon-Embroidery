@@ -37,7 +37,7 @@ export default function CustomManufacturing() {
         crumbs={[{ name: "Custom Manufacturing", path: "/custom-patch-manufacturing/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.production.hoop} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 55%" />
+            <Photo photo={media.production.hoop} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 55%" />
           </Reveal>
         }
       >
@@ -70,8 +70,8 @@ export default function CustomManufacturing() {
           </div>
           <Reveal>
             <div className="grid grid-cols-2 gap-4">
-              <Photo photo={media.production.line} className="aspect-[3/4] rounded-3xl" sizes="25vw" />
-              <Photo photo={media.production.headAlt} className="aspect-[3/4] rounded-3xl" sizes="25vw" position="50% 35%" />
+              <Photo photo={media.production.line} className="aspect-[3/4] rounded-xl" sizes="25vw" />
+              <Photo photo={media.production.headAlt} className="aspect-[3/4] rounded-xl" sizes="25vw" position="50% 35%" />
             </div>
           </Reveal>
         </div>

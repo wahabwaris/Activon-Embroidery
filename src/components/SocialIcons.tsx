@@ -43,7 +43,7 @@ export default function SocialIcons({ className = "" }: { className?: string }) 
             target="_blank"
             rel="noopener noreferrer"
             aria-label={icons[key].label}
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-silver-300 transition hover:border-brand hover:bg-brand hover:text-white"
+            className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-silver-300 transition hover:border-brand hover:bg-brand hover:text-ink"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
               <path d={icons[key].path} />

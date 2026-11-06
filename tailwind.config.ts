@@ -10,25 +10,29 @@ const config: Config = {
     },
     extend: {
       colors: {
+        // Rich Black #101010 · Graphite #202124 · Charcoal #383838
         ink: {
-          DEFAULT: "#0d0d0f",
-          900: "#0d0d0f",
-          800: "#151518",
-          700: "#1d1d21",
-          600: "#2a2a30",
+          DEFAULT: "#101010",
+          900: "#1c1c1e",
+          800: "#202124",
+          700: "#2b2b2e",
+          600: "#383838",
         },
+        // Champagne Gold #D4AF72 (accent). 700 is the text-safe shade for light backgrounds.
         brand: {
-          DEFAULT: "#e1251b",
-          600: "#c81e15",
-          400: "#ff4a3d",
+          DEFAULT: "#d4af72",
+          400: "#e3c896",
+          600: "#bf9a5c",
+          700: "#7f6033",
         },
+        // Platinum Silver #C5C5C5 · Off White #F5F5F3
         silver: {
-          DEFAULT: "#a9adb5",
-          100: "#f2f3f5",
-          200: "#e1e3e7",
-          300: "#c9ccd2",
-          500: "#8b9099",
-          700: "#5b6068",
+          DEFAULT: "#c5c5c5",
+          100: "#f5f5f3",
+          200: "#e4e4e1",
+          300: "#c5c5c5",
+          500: "#8f8f8f",
+          700: "#575757",
         },
       },
       fontFamily: {
@@ -36,7 +40,7 @@ const config: Config = {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       backgroundImage: {
-        "metal": "linear-gradient(135deg,#f5f6f8 0%,#c9ccd2 35%,#8b9099 50%,#d9dce1 65%,#a9adb5 100%)",
+        "metal": "linear-gradient(135deg,#f5f5f3 0%,#c5c5c5 50%,#e4e4e1 100%)",
       },
       keyframes: {
         marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },

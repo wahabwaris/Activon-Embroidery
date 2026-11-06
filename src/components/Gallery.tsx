@@ -76,7 +76,7 @@ export default function Gallery({ withFilters = true, limit }: { withFilters?: b
               <button
                 type="button"
                 onClick={() => setIndex(i)}
-                className="group relative block aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-700 to-ink-900 text-left"
+                className="group relative block aspect-square w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-ink-700 to-ink-900 text-left"
                 aria-label={`View larger: ${item.title}`}
               >
                 <div className={`absolute inset-0 grid place-items-center transition-transform duration-700 group-hover:scale-110 ${item.src ? "" : "p-6 group-hover:rotate-[-4deg]"}`}>

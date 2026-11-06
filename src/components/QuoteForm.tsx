@@ -345,7 +345,7 @@ export default function QuoteForm({ defaultProduct, lockProduct, defaults, id = 
                 e.preventDefault();
                 pickFile(e.dataTransfer.files?.[0] || null);
               }}
-              className="relative flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-white/15 bg-ink-900 px-6 py-8 text-center transition hover:border-brand/60"
+              className="relative flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-white/15 bg-ink-900 px-6 py-8 text-center transition hover:border-brand/60"
             >
               <FileUp className="h-8 w-8 text-brand-400" />
               {file ? (

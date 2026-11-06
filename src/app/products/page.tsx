@@ -42,7 +42,7 @@ export default function Products() {
         <div className="container">
           <SectionHeading eyebrow="Compare" title="Which patch type is right for you?" />
           <Reveal>
-            <div className="mt-10 overflow-x-auto rounded-3xl border border-white/10">
+            <div className="mt-10 overflow-x-auto rounded-xl border border-white/10">
               <table className="w-full min-w-[640px] text-left text-sm">
                 <thead className="bg-ink-800">
                   <tr>

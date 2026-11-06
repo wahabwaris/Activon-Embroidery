@@ -87,7 +87,7 @@ export function BackingOptions({ detailed = false, productName }: { detailed?: b
           <StaggerItem key={b.key}>
             <div className="card group relative h-full overflow-hidden p-7 transition hover:-translate-y-1 hover:border-white/25">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand to-transparent opacity-0 transition group-hover:opacity-100" />
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand/10 text-brand-400 ring-1 ring-brand/30">
+              <div className="grid h-12 w-12 place-items-center rounded-lg bg-brand/10 text-brand-400 ring-1 ring-brand/30">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold text-white">
@@ -116,7 +116,7 @@ const reasons = [
 
 export function WhyChoose() {
   return (
-    <Stagger className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+    <Stagger className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
       {reasons.map((r) => (
         <StaggerItem key={r.title} className="group bg-ink-800 p-7 transition-colors duration-500 hover:bg-ink-700">
           <r.icon className="h-7 w-7 text-brand-400 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110" />
@@ -147,9 +147,9 @@ export function ProcessSteps() {
       {processSteps.map((s, i) => (
         <Reveal as="li" key={s.title} delay={i * 0.08} className="relative">
           <div className="card h-full p-5 lg:bg-transparent lg:border-0 lg:p-0 lg:backdrop-blur-0">
-            <div className="relative z-10 grid h-16 w-16 place-items-center rounded-2xl border border-white/15 bg-ink-800 text-brand-400 shadow-lg">
+            <div className="relative z-10 grid h-16 w-16 place-items-center rounded-lg border border-white/15 bg-ink-800 text-brand-400 shadow-lg">
               <s.icon className="h-6 w-6" />
-              <span className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-brand text-[11px] font-bold text-white">{i + 1}</span>
+              <span className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-brand text-[11px] font-bold text-ink">{i + 1}</span>
             </div>
             <h3 className="mt-5 font-semibold text-white">{s.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-silver-500">{s.text}</p>
@@ -177,7 +177,7 @@ export function CtaBanner({
     <section className="section">
       <div className="container">
         <Reveal>
-          <div className="relative isolate overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-12 md:py-24">
+          <div className="relative isolate overflow-hidden rounded-xl px-6 py-16 text-center sm:px-12 md:py-24">
             <Photo photo={media.bulk.two} className="!absolute inset-0 -z-20" sizes="100vw" />
             <div className="absolute inset-0 -z-10 bg-ink/80" />
             <div className="absolute inset-x-0 top-0 -z-10 h-1 bg-brand" />

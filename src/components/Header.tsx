@@ -37,7 +37,7 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        open ? "py-5" : scrolled ? "border-b border-white/10 bg-ink/85 py-3 backdrop-blur-xl" : "bg-transparent py-5"
+        open ? "bg-ink py-5" : scrolled ? "border-b border-brand/20 bg-ink/95 py-3 backdrop-blur-xl" : "border-b border-white/[0.06] bg-ink py-5"
       }`}
     >
       <motion.div style={{ scaleX: progress }} className="absolute inset-x-0 top-0 h-[2px] origin-left bg-brand" />
@@ -80,7 +80,7 @@ export default function Header() {
                             <li key={c.href}>
                               <Link
                                 href={c.href}
-                                className="group flex items-center justify-between rounded-2xl px-4 py-3 text-sm text-silver-200 transition hover:bg-white/5 hover:text-white"
+                                className="group flex items-center justify-between rounded-lg px-4 py-3 text-sm text-silver-200 transition hover:bg-white/5 hover:text-white"
                               >
                                 {c.label}
                                 <ArrowUpRight className="h-4 w-4 opacity-0 transition group-hover:opacity-100 text-brand-400" />
@@ -102,7 +102,7 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={`relative rounded-full px-3 py-2 text-[13px] font-medium transition ${
-                      isActive(item.href) ? "text-white" : "text-silver-300 hover:text-white"
+                      isActive(item.href) ? "text-brand" : "text-silver-100/85 hover:text-brand"
                     }`}
                   >
                     {item.label}

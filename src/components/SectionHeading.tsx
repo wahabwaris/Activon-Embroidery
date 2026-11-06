@@ -20,7 +20,7 @@ export default function SectionHeading({
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow && (
         <Reveal>
-          <p className={`eyebrow ${center ? "justify-center" : ""} ${light ? "!text-brand-600" : ""}`}>{eyebrow}</p>
+          <p className={`eyebrow ${center ? "justify-center" : ""} ${light ? "!text-brand-700" : ""}`}>{eyebrow}</p>
         </Reveal>
       )}
       <Reveal delay={0.05}>

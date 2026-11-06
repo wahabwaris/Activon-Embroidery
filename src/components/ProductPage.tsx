@@ -54,8 +54,8 @@ export default function ProductPage({ productKey }: { productKey: ProductKey }) 
           p.photo ? (
             <Reveal>
               <div className="relative mx-auto max-w-md pb-10 pl-10">
-                <Photo photo={media.production.head} className="aspect-[4/5] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
-                <div className="absolute bottom-0 left-0 w-1/2 overflow-hidden rounded-3xl border-4 border-ink shadow-2xl">
+                <Photo photo={media.production.head} className="aspect-[4/5] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority position="50% 60%" />
+                <div className="absolute bottom-0 left-0 w-1/2 overflow-hidden rounded-xl border-4 border-ink shadow-2xl">
                   <Photo photo={p.photo} className="aspect-square" sizes="20vw" />
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default function ProductPage({ productKey }: { productKey: ProductKey }) 
           <div className="container grid grid-cols-2 gap-4 md:grid-cols-4">
             {[media.detail.rays, media.detail.merrowed, media.detail.checker, media.detail.stripes].map((ph, i) => (
               <Reveal key={ph.src} delay={i * 0.08}>
-                <Photo photo={ph} className="aspect-square rounded-3xl" sizes="(max-width:768px) 50vw, 25vw" />
+                <Photo photo={ph} className="aspect-square rounded-xl" sizes="(max-width:768px) 50vw, 25vw" />
               </Reveal>
             ))}
           </div>

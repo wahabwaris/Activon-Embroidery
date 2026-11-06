@@ -18,8 +18,8 @@ function table(rows: [string, string][]) {
 }
 
 function shell(title: string, body: string) {
-  return `<div style="background:#f2f3f5;padding:24px"><div style="max-width:620px;margin:auto;background:#fff;border-radius:12px;overflow:hidden">
-<div style="background:#0d0d0f;padding:20px 24px;border-bottom:4px solid #e1251b"><span style="color:#fff;font:700 20px Arial;letter-spacing:2px">ACTIVON EMBROIDERY</span><br><span style="color:#a9adb5;font:12px Arial">${esc(site.tagline)}</span></div>
+  return `<div style="background:#f5f5f3;padding:24px"><div style="max-width:620px;margin:auto;background:#fff;border-radius:12px;overflow:hidden">
+<div style="background:#101010;padding:20px 24px;border-bottom:4px solid #d4af72"><span style="color:#fff;font:700 20px Arial;letter-spacing:2px">ACTIVON EMBROIDERY</span><br><span style="color:#c5c5c5;font:12px Arial">${esc(site.tagline)}</span></div>
 <div style="padding:24px;font-family:Arial,sans-serif;color:#222"><h2 style="margin-top:0">${esc(title)}</h2>${body}</div></div></div>`;
 }
 

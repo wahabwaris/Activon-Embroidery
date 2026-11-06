@@ -8,8 +8,9 @@ export type Photo = { src: string; alt: string; w: number; h: number };
 const p = (name: string, alt: string, w: number, h: number): Photo => ({ src: `/media/photos/${name}.webp`, alt, w, h });
 
 export const media = {
-  heroVideo: "/media/hero-production.mp4",
-  heroPoster: "/media/photos/production-f1.webp",
+  /** 1080p for tablets/desktops, 720p for phones. */
+  heroVideo: { hd: "/media/hero-production-1080.mp4", sd: "/media/hero-production-720.mp4" },
+  heroPoster: "/media/photos/hero-poster.webp",
 
   production: {
     line: p("production-f19", "Row of multi-head embroidery machines running a patch production order", 788, 1400),

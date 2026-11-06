@@ -71,7 +71,7 @@ export default function Footer() {
             {wa && (
               <li>
                 <a href={wa} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-silver-300 transition hover:text-white">
-                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" /> Chat on WhatsApp
+                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" /> WhatsApp {site.whatsappDisplay}
                 </a>
               </li>
             )}

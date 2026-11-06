@@ -54,13 +54,15 @@ export default function Hero() {
           poster={media.heroPoster}
           aria-hidden
         >
-          <source src={media.heroVideo} type="video/mp4" />
+          <source src={media.heroVideo.sd} type="video/mp4" media="(max-width: 767px)" />
+          <source src={media.heroVideo.hd} type="video/mp4" />
         </video>
       </motion.div>
       {/* Readability overlays */}
-      <div className="absolute inset-0 -z-10 bg-ink/55" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/80 to-ink/10" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ink to-transparent" />
+      {/* Cinematic overlay: dark behind the text column, clear over the machines. */}
+      <div className="absolute inset-0 -z-10 bg-ink/60 lg:bg-ink/15" />
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink/90 via-ink/45 to-transparent lg:block" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-ink to-transparent" />
 
       <motion.div className="container relative" style={reduce ? undefined : { y: contentY, opacity: fade }}>
         <div className="max-w-3xl">
@@ -113,7 +115,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.9, ease }}
-          className="mt-14 grid grid-cols-2 overflow-hidden rounded-2xl border border-white/10 bg-ink/40 backdrop-blur-md lg:grid-cols-4"
+          className="mt-14 grid grid-cols-2 overflow-hidden rounded-lg border border-white/10 bg-ink/40 backdrop-blur-md lg:grid-cols-4"
         >
           {[
             { icon: Layers, t: "3 patch types", d: "Embroidered · Sublimation · Woven" },

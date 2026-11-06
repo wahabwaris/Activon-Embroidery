@@ -115,7 +115,7 @@ export const products: Product[] = [
       { q: "Which border options are available for embroidered patches?", a: "Merrowed (overlocked) borders suit round, square and simple shapes; hot-cut or laser-cut edges are used for detailed custom outlines." },
     ],
     hashtags: ["#CustomEmbroideredPatches", "#EmbroideredPatches", "#EmbroideryPatch", "#CustomPatches", "#PatchManufacturer", "#WholesalePatches", "#IronOnPatches", "#SewOnPatches", "#VelcroPatches", "#LogoPatch"],
-    art: { palette: ["#e1251b", "#0d0d0f", "#f2f3f5"], label: "EMB" },
+    art: { palette: ["#d4af72", "#101010", "#f5f5f3"], label: "EMB" },
     photo: media.detail.starLaurel,
   },
   {
@@ -162,7 +162,7 @@ export const products: Product[] = [
       { q: "Do you make sublimation patches in bulk for sports teams?", a: "Yes. We support bulk and wholesale orders for teams, clubs, academies and sportswear brands worldwide." },
     ],
     hashtags: ["#SublimationPatches", "#CustomSublimationPatches", "#FullColorPatches", "#PrintedPatches", "#CustomPatches", "#SportsPatches", "#TeamPatches", "#WholesalePatches", "#PatchManufacturer", "#VelcroPatches"],
-    art: { palette: ["#ff4a3d", "#7a0b06", "#ffd1cc"], label: "SUB" },
+    art: { palette: ["#e3c896", "#3a2f1e", "#f5f5f3"], label: "SUB" },
   },
   {
     key: "woven",
@@ -208,7 +208,7 @@ export const products: Product[] = [
       { q: "Do you offer private-label woven patches?", a: "Yes. We support OEM and private-label woven patches for clothing brands, uniform suppliers and wholesalers." },
     ],
     hashtags: ["#WovenPatches", "#CustomWovenPatches", "#WovenLabels", "#WovenBadges", "#ClothingLabels", "#FashionBrand", "#CustomPatches", "#PrivateLabel", "#PatchManufacturer", "#WholesalePatches"],
-    art: { palette: ["#0d0d0f", "#a9adb5", "#e1251b"], label: "WVN" },
+    art: { palette: ["#101010", "#c5c5c5", "#d4af72"], label: "WVN" },
   },
   // Future categories – keep `active: false` until officially offered.
   // { key: "pvc", active: false, slug: "pvc-patches", ... },

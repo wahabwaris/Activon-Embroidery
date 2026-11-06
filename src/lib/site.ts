@@ -3,7 +3,8 @@ export const site = {
   tagline: "Your Design. Our Craft.",
   email: "activonembroidery@gmail.com",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.activonembroidery.com").replace(/\/$/, ""),
-  whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(/\D/g, ""),
+  whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923091190715").replace(/\D/g, ""),
+  whatsappDisplay: process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY || "+92 309 1190715",
   description:
     "Activon Embroidery is a custom patch manufacturer and supplier of embroidered, sublimation and woven patches with iron-on, sew-on and Velcro backing. Wholesale, bulk, OEM and private-label orders shipped worldwide.",
   social: {

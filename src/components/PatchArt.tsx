@@ -52,7 +52,7 @@ function ShapeEl({ shape, ...rest }: { shape: ShapeKey } & React.SVGProps<SVGEle
 export default function PatchArt({
   type,
   shape = "circle",
-  palette = ["#e1251b", "#0d0d0f", "#f2f3f5"],
+  palette = ["#d4af72", "#101010", "#f5f5f3"],
   title = "ACTIVON",
   subtitle = "EMBROIDERY",
   className,

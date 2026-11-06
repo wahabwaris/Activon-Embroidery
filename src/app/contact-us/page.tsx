@@ -37,7 +37,7 @@ export default function Contact() {
             </Reveal>
             <Reveal delay={0.05}>
               <a href={`mailto:${site.email}`} className="card group flex items-center gap-5 p-7 transition hover:border-brand/50">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand/10 text-brand-400 ring-1 ring-brand/30"><Mail className="h-5 w-5" /></span>
+                <span className="grid h-12 w-12 place-items-center rounded-lg bg-brand/10 text-brand-400 ring-1 ring-brand/30"><Mail className="h-5 w-5" /></span>
                 <span>
                   <span className="block text-xs uppercase tracking-[0.25em] text-silver-500">Email</span>
                   <span className="block break-all font-semibold text-white">{site.email}</span>
@@ -47,10 +47,11 @@ export default function Contact() {
             {wa && (
               <Reveal delay={0.1}>
                 <a href={wa} target="_blank" rel="noopener noreferrer" className="card group flex items-center gap-5 p-7 transition hover:border-[#25D366]/60">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#25D366]/10 text-[#25D366] ring-1 ring-[#25D366]/30"><WhatsAppIcon /></span>
+                  <span className="grid h-12 w-12 place-items-center rounded-lg bg-[#25D366]/10 text-[#25D366] ring-1 ring-[#25D366]/30"><WhatsAppIcon /></span>
                   <span>
                     <span className="block text-xs uppercase tracking-[0.25em] text-silver-500">WhatsApp</span>
-                    <span className="block font-semibold text-white">Chat with us on WhatsApp</span>
+                    <span className="block font-semibold text-white">{site.whatsappDisplay}</span>
+                    <span className="block text-xs text-silver-500">Tap to chat on WhatsApp</span>
                   </span>
                 </a>
               </Reveal>

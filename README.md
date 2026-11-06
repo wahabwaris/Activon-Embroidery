@@ -57,7 +57,8 @@ App Password, and put it in `SMTP_PASS`. Without SMTP the form still works and s
 
 ## Things you need to supply
 
-1. **WhatsApp number** → `NEXT_PUBLIC_WHATSAPP_NUMBER` (floating button, contact page, footer appear automatically).
+1. **WhatsApp** – already set to +92 309 1190715 (floating button, contact page, footer). To change it,
+   set `NEXT_PUBLIC_WHATSAPP_NUMBER` (digits only) and `NEXT_PUBLIC_WHATSAPP_DISPLAY` in `.env.local`.
 2. **Social links** → `NEXT_PUBLIC_*_URL` (icons appear automatically).
 3. **More product photos** – especially sublimation and woven patches and each backing type
    (those sections still use vector illustrations). See "Media" below.
@@ -68,8 +69,9 @@ App Password, and put it in `SMTP_PASS`. Without SMTP the form still works and s
 
 ## Media
 
-- **Hero video:** `public/media/hero-production.mp4` (compressed from the 45 MB original to ~5 MB,
-  720p, no audio). Poster/fallback image: `public/media/photos/production-f1.webp`. The video
+- **Hero video:** `public/media/hero-production-1080.mp4` (~8 MB, desktops/tablets) and
+  `hero-production-720.mp4` (~4 MB, phones) – the browser picks the right one. Encoded from the
+  45 MB original, no audio. Poster/fallback image: `public/media/photos/hero-poster.webp`. The video
   autoplays muted and looped; on reduced-motion or data-saver devices the poster is shown instead.
 - **Photos:** `public/media/photos/*.webp`, registered in `src/lib/media.ts` (with alt text).
   Production stills come from the video; detail shots are tight crops of finished patches.
@@ -82,7 +84,8 @@ App Password, and put it in `SMTP_PASS`. Without SMTP the form still works and s
 
 ## Brand / logo
 
-The mark is a globe orbited by a running stitch ending in a needle – custom embroidery, delivered worldwide.
+The mark is a globe orbited by a running stitch ending in a needle – custom embroidery, delivered worldwide –
+drawn in champagne gold on black.
 
 | File | Use |
 |---|---|
@@ -93,7 +96,8 @@ The mark is a globe orbited by a running stitch ending in a needle – custom em
 | `public/brand/activon-avatar-1024.png` / `-512.png` | Social media profile pictures |
 | `src/app/icon.svg`, `src/app/apple-icon.png` | Favicon & iPhone home-screen icon |
 
-Brand colours: Ink `#0D0D0F`, Activon Red `#E1251B`, Silver `#C9CCD2` / `#A9ADB5`, Paper `#F4F4F2`.
+Brand colours: Rich Black `#101010`, Graphite `#202124`, Charcoal `#383838`, Platinum Silver `#C5C5C5`,
+Champagne Gold `#D4AF72` (accent; use `#7F6033` for gold text on light backgrounds), Off White `#F5F5F3`.
 Fonts: Oswald (headings, logo) and Inter (text), both free on Google Fonts. The SVG logo files
 reference these fonts by name, so install Oswald when editing them in a design tool.
 

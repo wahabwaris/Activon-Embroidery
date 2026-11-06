@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function Faq({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="divide-y divide-white/10 rounded-3xl border border-white/10 bg-ink-800/60">
+    <div className="divide-y divide-white/10 rounded-xl border border-white/10 bg-ink-800/60">
       {items.map((f, i) => {
         const isOpen = open === i;
         return (

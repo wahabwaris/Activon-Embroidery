@@ -47,7 +47,7 @@ export default function Oem() {
         crumbs={[{ name: "OEM & Private Label", path: "/oem-private-label/" }]}
         aside={
           <Reveal>
-            <Photo photo={media.bulk.two} className="aspect-[4/3] rounded-[2rem]" sizes="(max-width:1024px) 90vw, 35vw" priority />
+            <Photo photo={media.bulk.two} className="aspect-[4/3] rounded-xl" sizes="(max-width:1024px) 90vw, 35vw" priority />
           </Reveal>
         }
       >
