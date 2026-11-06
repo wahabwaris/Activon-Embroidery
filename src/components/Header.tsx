@@ -37,12 +37,12 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 print:hidden transition-all duration-500 ${
-        open ? "bg-ink py-5" : scrolled ? "border-b border-brand/20 bg-ink/95 py-3 backdrop-blur-xl" : "border-b border-white/[0.06] bg-ink py-5"
+        open ? "bg-ink py-2.5" : scrolled ? "border-b border-brand/20 bg-ink/95 py-1.5 backdrop-blur-xl" : "border-b border-white/[0.06] bg-ink py-2"
       }`}
     >
       <motion.div style={{ scaleX: progress }} className="absolute inset-x-0 top-0 h-[2px] origin-left bg-brand" />
       <div className="container flex items-center justify-between gap-6">
-        <Logo />
+        <Logo className={`w-auto transition-all duration-500 ${scrolled && !open ? "h-12 lg:h-14" : "h-14 lg:h-[76px]"}`} />
 
         <nav aria-label="Main navigation" className="hidden xl:block">
           <ul className="flex items-center gap-1">
@@ -139,7 +139,7 @@ export default function Header() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 top-0 -z-10 overflow-y-auto bg-ink px-6 pb-10 pt-28 xl:hidden"
+            className="fixed inset-0 top-0 -z-10 overflow-y-auto bg-ink px-6 pb-10 pt-24 xl:hidden"
           >
             <nav aria-label="Mobile navigation">
               <ul className="space-y-1">

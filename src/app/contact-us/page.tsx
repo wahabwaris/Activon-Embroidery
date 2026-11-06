@@ -6,7 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import SocialIcons, { WhatsAppIcon } from "@/components/SocialIcons";
 import { Reveal } from "@/components/motion";
 import { pageMetadata } from "@/lib/seo";
-import { site, whatsappLink } from "@/lib/site";
+import { site, whatsappLink, whatsappMessage } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us – Custom Patch Inquiries",
@@ -16,7 +16,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function Contact() {
-  const wa = whatsappLink();
+  const wa = whatsappLink(whatsappMessage("/contact-us/"));
   return (
     <>
       <PageHero

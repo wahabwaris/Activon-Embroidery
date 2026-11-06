@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 import { ArrowRight, Download, Globe, Mail, Phone } from "lucide-react";
 import Photo from "@/components/Photo";
 import PatchArt from "@/components/PatchArt";
-import { LogoMark } from "@/components/Logo";
+import { LogoImage } from "@/components/Logo";
 import JsonLd from "@/components/JsonLd";
 import Sheet, { SheetTitle, Spec } from "@/components/catalogue/Sheet";
 import PrintButton from "@/components/catalogue/PrintButton";
@@ -12,7 +12,7 @@ import { processSteps } from "@/components/sections";
 import { activeProducts, backings, getProduct, shapes, type Product } from "@/lib/catalog";
 import { media, type Photo as PhotoT } from "@/lib/media";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { site, whatsappLink } from "@/lib/site";
+import { site, whatsappLink, whatsappMessage } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Product Catalogue 2026 – Custom Patches (PDF Download)",
@@ -40,7 +40,7 @@ function ContactLine({ big = false }: { big?: boolean }) {
       </li>
       <li className="flex items-center gap-3">
         <Phone className="h-4 w-4 shrink-0 text-brand" />
-        <a href={whatsappLink()} className="text-white hover:text-brand">{site.whatsappDisplay}</a>
+        <a href={whatsappLink(whatsappMessage("/catalogue/"))} className="text-white hover:text-brand">{site.whatsappDisplay}</a>
         <span className="text-xs text-silver-500">Phone &amp; WhatsApp</span>
       </li>
       <li className="flex items-center gap-3">
@@ -91,7 +91,7 @@ function ProductSheet({ p, num, page, photos }: { p: Product; num: string; page:
 }
 
 export default async function Catalogue() {
-  const [qrWhatsApp, qrSite] = await Promise.all([qr(whatsappLink("Hello Activon Embroidery, I saw your catalogue and would like a quote.")), qr(`${site.url}/get-a-quote/`)]);
+  const [qrWhatsApp, qrSite] = await Promise.all([qr(whatsappLink(whatsappMessage("/catalogue/", "I saw your product catalogue and would like a quote."))), qr(`${site.url}/get-a-quote/`)]);
   const emb = getProduct("embroidered");
 
   return (
@@ -119,15 +119,9 @@ export default async function Catalogue() {
         {/* 1 · Cover */}
         <Sheet page={1} total={TOTAL} label="Cover" footer={false} className="isolate">
           <Photo photo={media.production.lineAlt} priority className="!absolute inset-0 -z-20" sizes="794px" position="50% 40%" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/80 via-ink/55 to-ink" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/60 to-ink" />
           <div className="flex flex-1 flex-col px-8 py-10 sm:px-14 sm:py-14">
-            <div className="flex items-center gap-3">
-              <LogoMark className="h-12 w-12" />
-              <span className="leading-none">
-                <span className="block font-display text-2xl font-semibold uppercase tracking-[0.12em] text-white">Activon</span>
-                <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.42em] text-brand">Embroidery</span>
-              </span>
-            </div>
+            <LogoImage className="h-28 w-auto sm:h-32" priority />
             <div className="mt-auto pt-40">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brand">Product Catalogue · 2026 Edition</p>
               <h2 className="h-display mt-4 text-5xl text-white sm:text-6xl">
@@ -287,10 +281,8 @@ export default async function Catalogue() {
               </div>
             </div>
             <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-6">
-              <LogoMark className="h-9 w-9" />
-              <p className="font-display text-lg uppercase tracking-[0.18em] text-white">
-                {site.name} <span className="text-brand">· {site.tagline}</span>
-              </p>
+              <LogoImage className="h-16 w-auto" priority />
+              <p className="font-display text-lg uppercase tracking-[0.18em] text-brand">{site.tagline}</p>
             </div>
           </div>
         </Sheet>

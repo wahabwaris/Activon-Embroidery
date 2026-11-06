@@ -101,22 +101,34 @@ reduced motion. Gallery tiles appear one by one.
 
 ## Brand / logo
 
-The mark is a globe orbited by a running stitch ending in a needle – custom embroidery, delivered worldwide –
-drawn in champagne gold on black.
+Official logo: metallic gold "Activon" with needle-and-thread "A", silver "EMBROIDERY", and an
+embroidery machine – black, metallic gold and silver. The supplied artwork read "EMBROIDARY";
+the website copies are corrected to **EMBROIDERY** (matching the business name and email).
 
 | File | Use |
 |---|---|
-| `public/brand/activon-logo-dark-bg.svg` | Full logo for dark backgrounds |
-| `public/brand/activon-logo-light-bg.svg` | Full logo for light backgrounds / documents |
-| `public/brand/activon-logo-on-black.svg` | Full logo with solid black background |
-| `public/brand/activon-mark.svg` / `activon-mark-dark.svg` | Symbol only |
+| `public/brand/activon-logo.webp` | Website logo (navbar, footer, catalogue) – transparent background |
+| `public/brand/activon-logo-transparent.png` | Full-resolution logo, transparent – best on dark backgrounds |
+| `public/brand/activon-logo-on-black.png` / `-on-white.png` | Logo on solid black / white |
 | `public/brand/activon-avatar-1024.png` / `-512.png` | Social media profile pictures |
-| `src/app/icon.svg`, `src/app/apple-icon.png` | Favicon & iPhone home-screen icon |
+| `public/brand/activon-mark-512.png` / `activon-mark-transparent.png` | "A" mark only |
+| `src/app/icon.png`, `src/app/apple-icon.png` | Browser favicon & iPhone home-screen icon |
 
 Brand colours: Rich Black `#101010`, Graphite `#202124`, Charcoal `#383838`, Platinum Silver `#C5C5C5`,
 Champagne Gold `#D4AF72` (accent; use `#7F6033` for gold text on light backgrounds), Off White `#F5F5F3`.
-Fonts: Oswald (headings, logo) and Inter (text), both free on Google Fonts. The SVG logo files
-reference these fonts by name, so install Oswald when editing them in a design tool.
+
+## WhatsApp
+
+Number: +92 309 1190715 (`NEXT_PUBLIC_WHATSAPP_NUMBER` / `NEXT_PUBLIC_WHATSAPP_DISPLAY` to change).
+Every WhatsApp link opens with a pre-filled message stating it comes from the Activon Embroidery
+website and which page, e.g.:
+
+> Hello Activon Embroidery! 👋
+> This message comes from your Activon Embroidery website (www.activonembroidery.com/embroidered-patches/).
+> I'd like a quote for custom patches.
+
+The floating button first shows a chat preview of this message with a **Continue to WhatsApp**
+button. Edit the wording in `whatsappMessage()` in `src/lib/site.ts`.
 
 ## SEO built in
 

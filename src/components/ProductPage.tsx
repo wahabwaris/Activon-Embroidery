@@ -228,10 +228,10 @@ export default function ProductPage({ productKey }: { productKey: ProductKey }) 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {others.map((o) => (
               <Reveal key={o.key}>
-                <Link href={`/${o.slug}/`} className="group card flex items-center gap-6 p-6 transition hover:border-brand/40">
-                  <PatchArt type={o.key} shape="circle" palette={o.art.palette} subtitle={o.name.split(" ")[0].toUpperCase()} className="h-24 w-24 shrink-0 transition-transform duration-500 group-hover:rotate-12" ariaLabel={o.name} />
-                  <div>
-                    <h3 className="font-display text-2xl uppercase text-white">{o.name}</h3>
+                <Link href={`/${o.slug}/`} className="group card flex items-center gap-4 p-5 transition hover:border-brand/40 sm:gap-6 sm:p-6">
+                  <PatchArt type={o.key} shape="circle" palette={o.art.palette} subtitle={o.name.split(" ")[0].toUpperCase()} className="h-16 w-16 shrink-0 transition-transform duration-500 group-hover:rotate-12 sm:h-24 sm:w-24" ariaLabel={o.name} />
+                  <div className="min-w-0">
+                    <h3 className="font-display text-xl uppercase text-white sm:text-2xl">{o.name}</h3>
                     <p className="mt-1 text-sm text-silver-300">{o.cardText}</p>
                   </div>
                   <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-brand-400 transition group-hover:translate-x-1" />

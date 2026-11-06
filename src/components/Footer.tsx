@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="stitch-line h-[2px] w-full opacity-60" />
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <Logo />
+          <Logo className="h-20 w-auto" priority={false} />
           <p className="mt-5 font-display text-2xl uppercase text-white">{site.tagline}</p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-silver-500">
             Custom patch manufacturer and supplier of embroidered, sublimation and woven patches for wholesale, bulk and OEM / private-label customers worldwide.

@@ -8,30 +8,16 @@ export const contentType = "image/png";
 
 export default async function OgImage() {
   const pub = path.join(process.cwd(), "public");
-  const mark = await fs.readFile(path.join(pub, "brand/activon-mark.svg"));
-  const markSrc = `data:image/svg+xml;base64,${mark.toString("base64")}`;
+  const logo = await fs.readFile(path.join(pub, "brand/activon-logo-transparent.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: "#101010", color: "#fff", padding: 72, position: "relative", fontFamily: "sans-serif" }}>
-        <div style={{ position: "absolute", left: 0, top: 0, width: "100%", height: 10, background: "#d4af72" }} />
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "#101010", color: "#fff", fontFamily: "sans-serif", position: "relative" }}>
+        <div style={{ position: "absolute", left: 0, top: 0, width: "100%", height: 8, background: "#d4af72" }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={markSrc} width={520} height={520} alt="" style={{ position: "absolute", right: -60, bottom: -40, opacity: 0.22 }} />
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={markSrc} width={84} height={84} alt="" />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: 40, fontWeight: 800, letterSpacing: 6 }}>ACTIVON</span>
-              <span style={{ fontSize: 17, letterSpacing: 12, color: "#d4af72" }}>EMBROIDERY</span>
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ fontSize: 74, fontWeight: 900, lineHeight: 1, textTransform: "uppercase" }}>Custom Patch Manufacturing</span>
-            <span style={{ fontSize: 74, fontWeight: 900, lineHeight: 1.05, color: "#d4af72", textTransform: "uppercase" }}>for Brands Worldwide</span>
-            <span style={{ marginTop: 28, fontSize: 28, color: "#c5c5c5" }}>Embroidered · Sublimation · Woven — Iron-On, Sew-On & Velcro Backing</span>
-          </div>
-          <span style={{ fontSize: 24, color: "#c5c5c5" }}>Your Design. Our Craft. · Wholesale · OEM & Private Label · Worldwide Shipping</span>
-        </div>
+        <img src={logoSrc} width={860} height={381} alt="" />
+        <span style={{ marginTop: 18, fontSize: 30, color: "#c5c5c5", letterSpacing: 2 }}>Custom Patch Manufacturing for Brands Worldwide</span>
+        <span style={{ marginTop: 10, fontSize: 22, color: "#d4af72", letterSpacing: 4, textTransform: "uppercase" }}>Embroidered · Sublimation · Woven · Wholesale · OEM</span>
       </div>
     ),
     size

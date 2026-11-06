@@ -16,7 +16,22 @@ export const site = {
   },
 };
 
-export function whatsappLink(message = "Hello Activon Embroidery, I would like a quote for custom patches.") {
+const siteDomain = site.url.replace(/^https?:\/\//, "");
+
+/**
+ * Pre-filled WhatsApp text. It always states that the chat started on the
+ * Activon Embroidery website (and which page), so the team knows the source.
+ */
+export function whatsappMessage(page?: string, intro = "I'd like a quote for custom patches.") {
+  const where = page && page !== "/" ? `${siteDomain}${page}` : siteDomain;
+  return [
+    "Hello Activon Embroidery! 👋",
+    `This message comes from your Activon Embroidery website (${where}).`,
+    intro,
+  ].join("\n");
+}
+
+export function whatsappLink(message = whatsappMessage()) {
   if (!site.whatsapp) return "";
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
