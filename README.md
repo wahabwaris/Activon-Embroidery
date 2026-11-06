@@ -144,6 +144,33 @@ trailing-slash URLs as requested. Keyword & hashtag plan: `SEO-KEYWORDS-AND-HASH
   switch to `true` when offered, and copy a product route folder.
 - Contact details & nav: `src/lib/site.ts`
 
+## Deploy on Vercel
+
+1. Push this project to GitHub (repo: `wahabwaris/Activon-Embroidery`).
+2. Go to https://vercel.com/new, sign in with GitHub, and **Import** the `Activon-Embroidery` repo.
+   Framework preset: **Next.js** (auto-detected). Leave build settings as default.
+3. Before clicking **Deploy**, open **Environment Variables** and add:
+
+| Name | Value |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | your live address, e.g. `https://www.activonembroidery.com` (or the `*.vercel.app` URL at first) |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | `923091190715` |
+| `NEXT_PUBLIC_WHATSAPP_DISPLAY` | `+92 309 1190715` |
+| `SMTP_HOST` / `SMTP_PORT` | `smtp.gmail.com` / `465` |
+| `SMTP_USER` | `activonembroidery@gmail.com` |
+| `SMTP_PASS` | your Gmail **App Password** (not your normal password) |
+| `INQUIRY_TO` | `activonembroidery@gmail.com` |
+| `ADMIN_USER` / `ADMIN_PASSWORD` | login for `/admin/` |
+| `NEXT_PUBLIC_GA_ID`, `GOOGLE_SITE_VERIFICATION` | optional – Google Analytics / Search Console |
+
+4. Click **Deploy**. Every later `git push` to `main` redeploys automatically.
+5. Custom domain: Vercel project → **Settings → Domains** → add `activonembroidery.com`, then set the
+   DNS records Vercel shows at your domain registrar. Update `NEXT_PUBLIC_SITE_URL` and redeploy.
+
+**On Vercel, inquiries arrive by email** (set the SMTP variables). Vercel's disk is temporary, so the
+`/admin/` dashboard only shows recent inquiries and loses them on redeploy. For a permanent
+dashboard, connect a database (e.g. Vercel Postgres/Neon or Supabase) in `src/lib/store.ts`.
+
 ## Hosting
 
 The dashboard stores data on disk, so use a Node host with a persistent disk (VPS, Hostinger

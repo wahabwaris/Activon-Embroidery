@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { ALLOWED_EXT, MAX_FILE_MB, backingOptions, productOptions, shapeOptions, validateQuote, type QuoteInput } from "@/lib/quote-schema";
-import { saveInquiry, storeUpload } from "@/lib/store";
+import { fallbackReference, saveInquiry, storeUpload } from "@/lib/store";
 import { sendInquiryEmails } from "@/lib/mailer";
 import { clientIp, looksLikeBot, rateLimited } from "@/lib/spam";
 
@@ -31,7 +31,12 @@ export async function POST(req: Request) {
     const ext = design.name.split(".").pop()?.toLowerCase() || "";
     if (!ALLOWED_EXT.includes(ext)) return NextResponse.json({ message: "Unsupported file type.", errors: { file: "Unsupported file type." } }, { status: 422 });
     if (design.size > MAX_FILE_MB * 1024 * 1024) return NextResponse.json({ message: "File too large.", errors: { file: `Max ${MAX_FILE_MB} MB.` } }, { status: 422 });
-    stored = await storeUpload(design);
+    try {
+      stored = await storeUpload(design);
+    } catch (err) {
+      console.error("[quote] could not store upload", err);
+      stored = { storedName: "", originalName: design.name.slice(0, 200), size: design.size, type: design.type, buffer: Buffer.from(await design.arrayBuffer()) };
+    }
   }
 
   const label = (opts: { value: string; label: string }[], v: string) => opts.find((o) => o.value === v)?.label || v;
@@ -56,7 +61,10 @@ export async function POST(req: Request) {
     kind: "quote",
     fields: readable,
     ip,
-    file: stored ? { storedName: stored.storedName, originalName: stored.originalName, size: stored.size, type: stored.type } : undefined,
+    file: stored?.storedName ? { storedName: stored.storedName, originalName: stored.originalName, size: stored.size, type: stored.type } : undefined,
+  }).catch((err) => {
+    console.error("[quote] could not save inquiry", err);
+    return { reference: fallbackReference() };
   });
 
   try {

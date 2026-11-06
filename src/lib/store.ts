@@ -8,7 +8,9 @@ import crypto from "crypto";
  * filesystem (e.g. Vercel), swap these functions for a database
  * (Supabase, Neon, MongoDB…) – the rest of the app stays the same.
  */
-const DATA_DIR = path.join(process.cwd(), "data");
+// Vercel's filesystem is read-only except /tmp (temporary, cleared between deployments/instances).
+// There, inquiries are delivered by email; use a database for a permanent dashboard.
+const DATA_DIR = process.env.VERCEL ? path.join("/tmp", "activon-data") : path.join(process.cwd(), "data");
 const FILE = path.join(DATA_DIR, "inquiries.json");
 export const UPLOAD_DIR = path.join(DATA_DIR, "uploads");
 
@@ -73,4 +75,10 @@ export async function storeUpload(file: File) {
   const buf = Buffer.from(await file.arrayBuffer());
   await fs.writeFile(path.join(UPLOAD_DIR, storedName), buf);
   return { storedName, originalName: file.name.slice(0, 200), size: file.size, type: file.type || "application/octet-stream", buffer: buf };
+}
+
+/** Reference number used when the inquiry could not be written to storage. */
+export function fallbackReference() {
+  const now = new Date();
+  return `AE-${now.toISOString().slice(2, 10).replace(/-/g, "")}-${crypto.randomBytes(2).toString("hex").toUpperCase()}`;
 }

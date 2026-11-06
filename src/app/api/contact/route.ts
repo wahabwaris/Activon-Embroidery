@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { saveInquiry } from "@/lib/store";
+import { fallbackReference, saveInquiry } from "@/lib/store";
 import { sendInquiryEmails } from "@/lib/mailer";
 import { clientIp, looksLikeBot, rateLimited } from "@/lib/spam";
 
@@ -26,7 +26,10 @@ export async function POST(req: Request) {
   if (Object.keys(errors).length) return NextResponse.json({ message: "Please check the highlighted fields.", errors }, { status: 422 });
 
   const fields = { Name: name, Email: email, "WhatsApp / Phone": phone, Subject: subject, Message: message };
-  const saved = await saveInquiry({ kind: "contact", fields, ip });
+  const saved = await saveInquiry({ kind: "contact", fields, ip }).catch((err) => {
+    console.error("[contact] could not save inquiry", err);
+    return { reference: fallbackReference() };
+  });
   try {
     await sendInquiryEmails({ kind: "contact", reference: saved.reference, customerName: name, customerEmail: email, rows: Object.entries(fields) });
   } catch (err) {
